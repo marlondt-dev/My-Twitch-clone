@@ -1,4 +1,4 @@
-@mixin desktop($mobile) {
-  @media {
+@mixin desktop($size: 75em) {
+  @media (width <= $size) {
   }
 }
