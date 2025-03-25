@@ -1,0 +1,31 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    border: 0;
+  }
+
+  html{
+    scroll-behavior: smooth;
+  }
+
+ body{
+    line-height: 1.6;
+ }
+
+ button{
+    cursor: pointer;
+    border: none;
+ }
+
+ a{
+    text-decoration: none;
+ }
+
+ img{
+    max-width: 100%;
+ }
+
+ ul{
+    list-style: none;
+ }

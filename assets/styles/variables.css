@@ -1,0 +1,10 @@
+:root {
+    --bg-color: #0E0E10;
+    --bg-color-gray: #18181B;
+
+    --text-color-white: #DEDEE3;
+    --text-color-gray: #ADADB8;
+
+    --button-color-blue: #199AFC;
+    --button-color-gray: #53535F, 38%;
+}
