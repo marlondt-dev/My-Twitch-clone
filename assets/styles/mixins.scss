@@ -2,3 +2,10 @@
   @media (width <= $size) {
   }
 }
+
+@mixin flex($direction: row, $align: center, $justiy: center) {
+  display: flex;
+  flex-direction: $direction;
+  align-items: $align;
+  justify-content: $justiy;
+}

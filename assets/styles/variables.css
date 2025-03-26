@@ -3,8 +3,15 @@
     --bg-color-gray: #18181B;
 
     --text-color-white: #DEDEE3;
+    --text-color-totalwhite: rgba(255, 255, 255, 0.7);
+ 
     --text-color-gray: #ADADB8;
+    --btn-text-color: #EFEFF1;
 
     --button-color-blue: #199AFC;
-    --button-color-gray: #53535F;
+    --button-color-gray: rgba(83, 83, 95, 0.38);
+
+
+
+
 }
