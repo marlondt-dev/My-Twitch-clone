@@ -1,5 +1,6 @@
-@mixin desktop($size: 75em) {
-  @media (width <= $size) {
+@mixin desktop($size: 64em) {
+  @media (min-width: $size) {
+    @content;
   }
 }
 

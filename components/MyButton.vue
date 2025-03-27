@@ -9,6 +9,8 @@ defineProps<{
 </template>
 
 <style lang="scss" scoped>
+@import "../assets/styles/mixins.scss";
+
 .btn {
   padding: 0.4em 0.5em;
   font-weight: bold;
@@ -19,6 +21,10 @@ defineProps<{
 .blue {
   background-color: var(--button-color-blue);
   color: #ffffff;
+
+  @include desktop {
+    background-color: red;
+  }
 }
 
 .gray {

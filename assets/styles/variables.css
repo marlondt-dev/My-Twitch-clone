@@ -1,17 +1,13 @@
 :root {
-    --bg-color: #0E0E10;
-    --bg-color-gray: #18181B;
+  --bg-color: #0e0e10;
+  --bg-color-gray: #18181b;
 
-    --text-color-white: #DEDEE3;
-    --text-color-totalwhite: rgba(255, 255, 255, 0.7);
- 
-    --text-color-gray: #ADADB8;
-    --btn-text-color: #EFEFF1;
+  --text-color-white: #dedee3;
+  --text-color-totalwhite: rgba(255, 255, 255, 0.7);
 
-    --button-color-blue: #199AFC;
-    --button-color-gray: rgba(83, 83, 95, 0.38);
+  --text-color-gray: #adadb8;
+  --btn-text-color: #efeff1;
 
-
-
-
+  --button-color-blue: #199afc;
+  --button-color-gray: rgba(83, 83, 95, 0.38);
 }
