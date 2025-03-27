@@ -13,7 +13,7 @@
 
 <style lang="scss" scoped>
 .nav-container {
-  max-width: 95.62em;
+  width: 95.62em;
   height: 3.12em;
   margin: auto;
   background-color: var(--bg-color-gray);

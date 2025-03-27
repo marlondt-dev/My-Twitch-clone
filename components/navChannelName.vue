@@ -6,7 +6,7 @@
     </div>
 
     <div class="channel-name__options">
-      <img src="../public/container.png" />
+      <img src="../public/container.png" class="options" />
     </div>
   </div>
 </template>
