@@ -1,20 +1,17 @@
-<script setup lang="ts">
-import { StreamsChannelContent } from "#components";
-
-import { directCards } from "@/mocks/directCards";
-</script>
+<script setup lang="ts"></script>
 <template>
   <div>
-    <NuxtLayout name="channel">
-      <div class="channels">
-        <StreamsChannelContent
-          v-for="directCard in directCards"
-          :key="directCard.id"
-          v-bind="directCard"
-        />
-      </div>
-      <div class="divider"></div>
-    </NuxtLayout>
+    <section class="channels-container">
+      <p class="channels-container__text">
+        <span class="channels-container__text channels-container__text--blue"
+          >Live Channels</span
+        >
+        we think you'll like
+      </p>
+      <h1>bfdbdfbdbdb</h1>
+      <slot />
+    </section>
+    <div class="divider"></div>
   </div>
 </template>
 
@@ -43,7 +40,6 @@ import { directCards } from "@/mocks/directCards";
 .channels {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  gap: 2.3125rem;
   width: 76.25em;
   height: 19.9em;
 }

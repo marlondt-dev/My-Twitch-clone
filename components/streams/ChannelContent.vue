@@ -1,7 +1,11 @@
-<script setup></script>
+<script setup lang="ts">
+import type { DirectCard } from "@/types/directCard";
+defineProps<DirectCard>();
+</script>
 <template>
   <div class="channel">
-    <div><img src="../../public/Midu.png" /></div>
+    {{ $props }}
+    <h1>{{ userName }}</h1>
   </div>
 </template>
 
@@ -10,5 +14,6 @@
   max-width: 23.87em;
   height: 19.901em;
   background-color: black;
+  color: white;
 }
 </style>
