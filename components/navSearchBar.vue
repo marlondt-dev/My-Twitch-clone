@@ -15,10 +15,14 @@
 @import "../assets/styles/mixins.scss";
 
 .search-pannel {
-  width: 24.375em;
-  height: 2.5em;
-  display: flex;
-  align-items: center;
+  width: 4em;
+
+  @include desktop {
+    width: 24.375em;
+    height: 2.5em;
+    display: flex;
+    align-items: center;
+  }
 
   &__search {
     display: none;
