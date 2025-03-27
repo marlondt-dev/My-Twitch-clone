@@ -5,7 +5,7 @@
     <div class="user-buttons">
       <MyButton :class="'gray'">Log in</MyButton>
       <MyButton :class="'blue'">Sign Up </MyButton>
-      <div><img src="../public/account" /></div>
+      <div><img src="../public/account.png" /></div>
     </div>
   </div>
 </template>

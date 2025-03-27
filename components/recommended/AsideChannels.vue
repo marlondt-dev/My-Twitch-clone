@@ -5,8 +5,8 @@
 
 <style lang="scss" scoped>
 .chat {
-  min-width: 16.25em;
+  width: 16.25em;
   height: 22.81em;
-  background-color: white;
+  background-color: rgb(73, 62, 62);
 }
 </style>

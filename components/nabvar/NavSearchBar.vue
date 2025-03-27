@@ -12,23 +12,36 @@
 </template>
 
 <style lang="scss" scoped>
+@import "../../assets/styles/mixins.scss";
+
 .search-pannel {
-  width: 24.375em;
-  height: 2.5em;
-  display: flex;
-  align-items: center;
+  width: 4em;
+
+  @include desktop {
+    width: 24.375em;
+    height: 2.5em;
+    display: flex;
+    align-items: center;
+  }
 
   &__search {
-    box-shadow: 0px 0px 0px 1px #dedee366 inset;
-    border-radius: 0.37em 0em 0.37em 0.37em;
-    height: 2.7em;
-    width: 22.25em;
-    background-color: #18181b;
-    padding: 0.9em;
+    display: none;
+
+    @include desktop {
+      display: block;
+      box-shadow: 0px 0px 0px 1px #dedee366 inset;
+      border-radius: 0.37em 0em 0.37em 0.37em;
+      height: 2.7em;
+      width: 22.25em;
+      background-color: #18181b;
+      padding: 0.9em;
+    }
   }
+
   input::placeholder {
     color: var(--text-color-totalwhite);
   }
+
   .search-panel__icon {
     width: 2.2em;
     height: 2.7em;
