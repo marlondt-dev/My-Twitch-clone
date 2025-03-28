@@ -5,7 +5,7 @@ defineProps<RecommendedChannel>();
 </script>
 <template>
   <div class="channel-container">
-    <img class="channel__img" src="../../public/profile.png" />
+    <img class="channel-img" :src="channelIcon" />
     <div class="channel-name">
       <p class="channel-name__text">{{ channelName }}</p>
       <p class="channel-name__description">{{ channelDescription }}</p>
@@ -24,15 +24,15 @@ defineProps<RecommendedChannel>();
   line-height: 0.8;
 }
 
+.channel-img {
+  max-width: 1.875rem;
+  height: 1.875rem;
+  border-radius: 50%;
+}
+
 .channel-name {
   width: 8.75rem;
   height: 1.875rem;
-
-  &__img {
-    max-width: 1.875rem;
-    height: 1.875rem;
-    border-radius: 62499.9375rem;
-  }
 
   &__text {
     font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",

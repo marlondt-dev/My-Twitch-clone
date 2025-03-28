@@ -1,6 +1,6 @@
 export type RecommendedChannel = {
   id: number;
-  chanelIcon: string;
+  channelIcon: string;
   channelName: string;
   channelDescription: string;
   channelViewers: string;
