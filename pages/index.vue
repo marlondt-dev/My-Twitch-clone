@@ -14,5 +14,6 @@
   margin: auto;
   justify-content: space-between;
   margin-top: 1.25em;
+  padding: 0 1.25rem;
 }
 </style>

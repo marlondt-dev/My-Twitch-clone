@@ -8,10 +8,8 @@
         >
         we think you'll like
       </p>
-      <h1>bfdbdfbdbdb</h1>
       <slot />
     </section>
-    <div class="divider"></div>
   </div>
 </template>
 

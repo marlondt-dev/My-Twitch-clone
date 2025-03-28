@@ -13,7 +13,6 @@ import { directCards } from "@/mocks/directCards";
           v-bind="directCard"
         />
       </div>
-      <div class="divider"></div>
     </NuxtLayout>
   </div>
 </template>
@@ -46,11 +45,5 @@ import { directCards } from "@/mocks/directCards";
   gap: 2.3125rem;
   width: 76.25em;
   height: 19.9em;
-}
-
-.divider {
-  width: 76.25rem;
-  height: 2.5rem;
-  background-color: gray;
 }
 </style>
