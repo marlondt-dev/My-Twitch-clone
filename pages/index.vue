@@ -9,7 +9,7 @@
 <style lang="scss" scoped>
 .container {
   display: flex;
-  width: 95.62em;
+  max-width: 95.625em;
   height: 141.688em;
   margin: auto;
   justify-content: space-between;
