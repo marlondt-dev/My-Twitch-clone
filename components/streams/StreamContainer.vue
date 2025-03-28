@@ -1,26 +1,26 @@
 <script setup lang="ts">
-import { StreamsChannelContent } from "#components";
-
-import { directCards } from "@/mocks/directCards";
+defineProps<{
+  name: string;
+  height?: "live" | "category";
+}>();
 </script>
 <template>
   <div>
-    <StreamsStreamContainer :name="'Live Channels'" :height="'live'">
-      <div class="channels">
-        <StreamsChannelContent
-          v-for="directCard in directCards"
-          :key="directCard.id"
-          v-bind="directCard"
-        />
-      </div>
-    </StreamsStreamContainer>
+    <section class="channels-container" :class="height">
+      <p class="channels-container__text">
+        <span class="channels-container__text channels-container__text--blue">{{
+          name
+        }}</span>
+        we think you'll like
+      </p>
+      <slot />
+    </section>
   </div>
 </template>
 
 <style lang="scss" scoped>
 .channels-container {
   width: 76.25em;
-  height: 21.91em;
 
   &__text {
     font-weight: 600;
@@ -39,11 +39,10 @@ import { directCards } from "@/mocks/directCards";
   }
 }
 
-.channels {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 2.3125rem;
-  width: 76.25em;
-  height: 19.9em;
+.live {
+  height: 21.91em;
+}
+.category {
+  height: 22.2638em;
 }
 </style>
