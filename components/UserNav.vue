@@ -1,12 +1,12 @@
 <script setup lang="ts"></script>
 <template>
   <div class="user-container">
-    <div><img src="../public/button-prime.png" /></div>
-    <div class="user-buttons">
-      <MyButton :class="'gray'">Log in</MyButton>
-      <MyButton :class="'blue'">Sign Up </MyButton>
-      <div><img src="../public/account.png" /></div>
-    </div>
+    <div><img src="../public/button-prime.png" ></div>
+    <ul class="user-buttons">
+      <li><MyButton :class="'gray'">Log in</MyButton></li>
+      <li><MyButton :class="'blue'">Sign Up </MyButton></li>
+      <li><div><img src="../public/account.png" ></div></li>
+    </ul>
   </div>
 </template>
 

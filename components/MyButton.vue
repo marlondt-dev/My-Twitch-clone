@@ -9,7 +9,7 @@ defineProps<{
 </template>
 
 <style lang="scss" scoped>
-@import "../assets/styles/mixins.scss";
+
 
 .btn {
   padding: 0.4em 0.5em;

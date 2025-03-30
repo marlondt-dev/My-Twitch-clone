@@ -5,7 +5,7 @@ import { recommendedChannels } from "@/mocks/recommendedChannels";
   <aside class="chat">
     <div class="chat__text-container">
       <p>Recommended Channels</p>
-      <img src="../../public/reccommended-icon.png" />
+      <img src="../../public/reccommended-icon.png" >
     </div>
     <RecommendedChannels
       v-for="recommendedChannel in recommendedChannels"

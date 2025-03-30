@@ -5,7 +5,7 @@ defineProps<RecommendedChannel>();
 </script>
 <template>
   <div class="channel-container">
-    <img class="channel-img" :src="channelIcon" />
+    <img class="channel-img" :src="channelIcon" >
     <div class="channel-name">
       <p class="channel-name__text">{{ channelName }}</p>
       <p class="channel-name__description">{{ channelDescription }}</p>

@@ -3,9 +3,13 @@ defineProps<{
   name: string;
   height?: "live" | "category";
 }>();
+
+const  {data}=  await useFetch('https://dummyjson.com/products');
+console.log(data.products)
 </script>
 <template>
   <div>
+    {{ products }}
     <section class="channels-container" :class="height">
       <p class="channels-container__text">
         <span class="channels-container__text channels-container__text--blue">{{

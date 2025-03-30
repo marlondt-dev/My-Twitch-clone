@@ -2,17 +2,17 @@
 <template>
   <div class="search-pannel">
     <div>
-      <input class="search-pannel__search" type="text" placeholder="Search" />
+      <input class="search-pannel__search" type="text" placeholder="Search" >
     </div>
 
     <MyButton class="search-panel__icon" :color="'gray'">
-      <img class="search-panel__icon__img" src="../public/SVG.png" />
+      <img class="search-panel__icon__img" src="../public/SVG.png" >
     </MyButton>
   </div>
 </template>
 
-<style lang="scss" scoped>
-@import "../assets/styles/mixins.scss";
+<style scoped lang="scss">
+
 
 .search-pannel {
   width: 4em;
@@ -35,6 +35,7 @@
       width: 22.25em;
       background-color: #18181b;
       padding: 0.9em;
+      color: var(--text-color-totalwhite);
     }
   }
 
