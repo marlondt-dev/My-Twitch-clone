@@ -1,9 +1,10 @@
 <script setup lang="ts">
 import { StreamsChannelContent } from "#components";
-
 import { directCards } from "@/mocks/directCards";
+
 </script>
 <template>
+  
   <div>
     <StreamsStreamContainer :name="'Live Channels'" :height="'live'">
       <div class="channels">
