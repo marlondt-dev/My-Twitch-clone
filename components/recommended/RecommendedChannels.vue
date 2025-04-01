@@ -5,7 +5,7 @@ defineProps<RecommendedChannel>();
 </script>
 <template>
   <div class="channel-container">
-    <img class="channel-img" :src="channelIcon" >
+    <img class="channel-img" :src="channelIcon" />
     <div class="channel-name">
       <p class="channel-name__text">{{ channelName }}</p>
       <p class="channel-name__description">{{ channelDescription }}</p>
@@ -19,8 +19,8 @@ defineProps<RecommendedChannel>();
   width: 16.25rem;
   height: 2.5rem;
   padding: 0.3125rem 0.625rem;
-  display: flex;
-  justify-content: space-between;
+
+  @include flex(row, center, space-between);
   line-height: 0.8;
 }
 
@@ -35,23 +35,12 @@ defineProps<RecommendedChannel>();
   height: 1.875rem;
 
   &__text {
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-      Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
-      sans-serif;
-    font-size: 0.875rem;
-    line-height: 1.05rem;
-    font-weight: 600;
-    color: var(--text-color-white);
+    @include text(600, 0.875em, var(--text-color-white));
+    line-height: 1.05em;
   }
 
   &__description {
-    font-size: 0.8125rem;
-    font-weight: 400;
-    letter-spacing: 0%;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-      Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
-      sans-serif;
-    color: var(--text-color-gray);
+    @include text(400, 0.8125em, var(--text-color-gray));
   }
 
   &__viewers {

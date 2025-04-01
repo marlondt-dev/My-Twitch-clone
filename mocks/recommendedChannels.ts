@@ -14,7 +14,7 @@ export const recommendedChannels: RecommendedChannels = [
     channelIcon:
       "https://img.asmedia.epimg.net/resizer/v2/FPTG2W4YCNBBPDQH326G7IHKA4.png?auth=214e9134edc405a84190bdd07b4bda037eeb5de98fa40a120b155e2b0f24f395&width=1472&height=1104&smart=true",
     channelName: "jjjjbaf",
-    channelDescription: "alive",
+    channelDescription: "not today",
     channelViewers: "66",
   },
   {

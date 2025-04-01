@@ -30,39 +30,20 @@ defineProps<CategoriesCards>();
   height: 4.4375em;
 
   &__name {
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-      Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
-      sans-serif;
-    color: var(--text-color-white);
-    font-size: 0.875em;
+    @include text(700, 0.875em, var(--text-color-white));
     line-height: 1.3125em;
-    font-weight: 700;
   }
 
   &__viewers {
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-      Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
-      sans-serif;
-    color: var(--text-color-gray);
-    font-size: 0.8125em;
-    font-weight: 400;
+    @include text(400, 0.8125em, var(--text-color-gray));
     line-height: 1.2188em;
   }
 
   &__tag {
-    min-width: 1.75em;
-    height: 1.25em;
     background-color: var(--button-color-gray);
-    padding: 0.125em 0.3125em 0 0.3125em;
     border-radius: 562.5em;
-    color: var(--text-color-gray);
-    font-size: 0.75em;
-    font-weight: 600;
-    vertical-align: middle;
-    line-height: 1.125em;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-      Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
-      sans-serif;
+
+    @include text(600, 0.75em, var(--text-color-gray));
     line-height: 1.125em;
   }
 }

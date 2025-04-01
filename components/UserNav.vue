@@ -1,11 +1,13 @@
 <script setup lang="ts"></script>
 <template>
   <div class="user-container">
-    <div><img src="../public/button-prime.png" ></div>
+    <div><img src="../public/button-prime.png" /></div>
     <ul class="user-buttons">
       <li><MyButton :class="'gray'">Log in</MyButton></li>
       <li><MyButton :class="'blue'">Sign Up </MyButton></li>
-      <li><div><img src="../public/account.png" ></div></li>
+      <li>
+        <div><img src="../public/account.png" /></div>
+      </li>
     </ul>
   </div>
 </template>
@@ -14,8 +16,7 @@
 .user-container {
   width: 18em;
   height: 2.5em;
-  display: flex;
-  align-items: center;
+  @include flex(row, center);
   gap: 0.5em;
 
   .user-buttons {

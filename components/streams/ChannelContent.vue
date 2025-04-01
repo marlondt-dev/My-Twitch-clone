@@ -1,5 +1,9 @@
 <script setup lang="ts">
 import type { DirectCard } from "@/types/directCard";
+import { useStreams } from "@/composables/useStreams";
+
+const { stream, loading, error } = useStreams();
+
 defineProps<DirectCard>();
 </script>
 <template>
@@ -41,6 +45,7 @@ defineProps<DirectCard>();
   &__container {
     width: 20.4375em;
     height: 6.125em;
+    @include flex(column, left, space-evenly);
   }
 
   &__img {
@@ -50,29 +55,15 @@ defineProps<DirectCard>();
   }
 
   &__title {
-    font-weight: 600;
-    font-size: 0.875em;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-      Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
-      sans-serif;
-    color: var(--text-color-white);
+    @include text(600, 0.875em, var(--text-color-white));
   }
 
   &__user {
-    font-weight: 400;
-    color: var(--text-color-gray);
-    font-size: 0.8125em;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-      Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
-      sans-serif;
+    @include text(400, 0.8125em, var(--text-color-gray));
   }
 
   &__category {
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-      Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
-      sans-serif;
-    font-size: 0.8125em;
-    color: var(--text-color-gray);
+    @include text(400, 0.8125em, var(--text-color-gray));
   }
 }
 </style>

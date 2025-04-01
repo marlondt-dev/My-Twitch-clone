@@ -15,11 +15,10 @@ const getData = async () => {
         },
       }
     );
-    return response.data;
+    return response;
   } catch (error) {
     return error;
   }
 };
 
-const data = getData();
-console.log(data);
+console.log(getData);

@@ -8,7 +8,7 @@
     </div>
 
     <div class="channel-name__options">
-      <img src="../public/container.png" class="options" >
+      <img src="../public/container.png" class="options" />
     </div>
   </div>
 </template>
@@ -17,9 +17,7 @@
 .channel-name {
   width: 9.18em;
   height: 2.5em;
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
+  @include flex(row, center, space-evenly);
 
   &__icon {
     width: 6.06em;
@@ -27,4 +25,3 @@
   }
 }
 </style>
-

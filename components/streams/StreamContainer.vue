@@ -3,11 +3,9 @@ defineProps<{
   name: string;
   height?: "live" | "category";
 }>();
-
 </script>
 <template>
   <div>
-    
     <section class="channels-container" :class="height">
       <p class="channels-container__text">
         <span class="channels-container__text channels-container__text--blue">{{
@@ -25,18 +23,11 @@ defineProps<{
   width: 76.25em;
 
   &__text {
-    font-weight: 600;
-    font-size: 1.125;
-    color: var(--btn-text-color);
+    @include text(600, 1.125em, var(--btn-text-color));
     margin-bottom: 0.5em;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-      Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
-      sans-serif;
 
     &--blue {
-      font-weight: 600;
-      font-size: 1.125;
-      color: var(--button-color-blue);
+      @include text(600, 1.125em, var(--button-color-blue));
     }
   }
 }

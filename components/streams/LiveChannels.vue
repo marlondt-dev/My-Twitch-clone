@@ -1,13 +1,8 @@
 <script setup lang="ts">
 import { StreamsChannelContent } from "#components";
 import { directCards } from "@/mocks/directCards";
-
-const { data: stream } = useFetch("/api/stream");
-
-console.log(stream);
 </script>
 <template>
-  <div v-for="streams in stream" :key="stream.id" v-bind="stream"></div>
   <div>
     <StreamsStreamContainer :name="'Live Channels'" :height="'live'">
       <div class="channels">
@@ -27,18 +22,10 @@ console.log(stream);
   height: 21.91em;
 
   &__text {
-    font-weight: 600;
-    font-size: 1.125;
-    color: var(--btn-text-color);
-    margin-bottom: 0.5em;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-      Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
-      sans-serif;
+    @include text(600, 1.125em, var(--btn-text-color));
 
     &--blue {
-      font-weight: 600;
-      font-size: 1.125;
-      color: var(--button-color-blue);
+      @include text(600, 1.125em, var(--button-color-blue));
     }
   }
 }
