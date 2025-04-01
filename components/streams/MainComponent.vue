@@ -8,6 +8,9 @@ import { StreamsDivisionLine } from "#components";
     <StreamsLiveChannels />
     <StreamsDivisionLine />
     <StreamsCategories />
+    <StreamsLiveChannels />
+    <StreamsDivisionLine />
+    <StreamsLiveChannels />
   </main>
 </template>
 

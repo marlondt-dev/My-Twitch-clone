@@ -4,7 +4,9 @@ defineProps<DirectCard>();
 </script>
 <template>
   <div class="details-container">
-    <img :src="headerImg" class="details-container__img" />
+    <NuxtLink to="/streamer">
+      <img :src="headerImg" class="details-container__img"
+    /></NuxtLink>
 
     <div class="live-details">
       <img class="live-details__img" :src="icon" />

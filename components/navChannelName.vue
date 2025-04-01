@@ -2,7 +2,9 @@
 <template>
   <div class="channel-name">
     <div class="channel-name__icon">
-      <img src="../public/midutch-logo.png" alt="Marlon logo" >
+      <NuxtLink to="/"
+        ><img src="../public/midutch-logo.png" alt="Marlon logo"
+      /></NuxtLink>
     </div>
 
     <div class="channel-name__options">
