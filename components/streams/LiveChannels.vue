@@ -2,9 +2,12 @@
 import { StreamsChannelContent } from "#components";
 import { directCards } from "@/mocks/directCards";
 
+const { data: stream } = useFetch("/api/stream");
+
+console.log(stream);
 </script>
 <template>
-  
+  <div v-for="streams in stream" :key="stream.id" v-bind="stream"></div>
   <div>
     <StreamsStreamContainer :name="'Live Channels'" :height="'live'">
       <div class="channels">
