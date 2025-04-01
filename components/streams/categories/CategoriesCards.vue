@@ -28,6 +28,8 @@ defineProps<CategoriesCards>();
 .card-details {
   width: 11.3544em;
   height: 4.4375em;
+  @include flex(column, left);
+  gap: 0.31em;
 
   &__name {
     @include text(700, 0.875em, var(--text-color-white));

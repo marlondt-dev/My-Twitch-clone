@@ -1,7 +1,7 @@
 import axios from "axios";
 import { getAppAccessToken } from "../services/twitch";
 
-const getData = async () => {
+export const getData = async () => {
   try {
     const token = await getAppAccessToken();
     const clientId = process.env.TWITCH_CLIENT_ID;
@@ -10,8 +10,8 @@ const getData = async () => {
       "https://api.twitch.tv/helix/streams?first=3",
       {
         headers: {
-          "client-ID": clientId,
-          authorization: ` Bearer ${token}`,
+          "Client-ID": clientId,
+          Authorization: `Bearer ${token}`,
         },
       }
     );
@@ -20,5 +20,3 @@ const getData = async () => {
     return error;
   }
 };
-
-console.log(getData);
