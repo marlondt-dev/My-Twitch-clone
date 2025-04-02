@@ -8,8 +8,8 @@ const { stream, loading, error } = useStreams();
   <div>
     <StreamsStreamContainer :name="'Live Channels'" :height="'live'">
       <div class="channels">
-        <div v-if="loading"><h2>Cargando streams...</h2></div>
-        <div v-else-if="error">Error al cargar los streams</div>
+        <div v-if="loading"><h3>Loading content...</h3></div>
+        <div v-else-if="error"><h3>Error while loding content</h3></div>
         <StreamsChannelContent
           v-for="streams in stream"
           :key="streams.id"
