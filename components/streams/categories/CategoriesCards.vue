@@ -1,15 +1,19 @@
 <script setup lang="ts">
-import type { CategoriesCards } from "~/types/categoriesCards";
+import type { Category } from "~/types/categoryCard";
 
-defineProps<CategoriesCards>();
+defineProps<Category>();
 </script>
 <template>
   <div class="card">
-    <img class="card__img" :src="categoryImg" :alt="categoryName" />
+    <img
+      class="card__img"
+      :src="box_art_url.replace('{width}', '181').replace('{height}', '242')"
+      :alt="name"
+    />
     <div class="card-details">
-      <p class="card-details__name">{{ categoryName }}</p>
-      <p class="card-details__viewers">{{ categoryViewers }}</p>
-      <p class="card-details__tag">{{ categoryTag }}</p>
+      <p class="card-details__name">{{ name }}</p>
+      <p class="card-details__viewers">45545</p>
+      <p class="card-details__tag">tag</p>
     </div>
   </div>
 </template>

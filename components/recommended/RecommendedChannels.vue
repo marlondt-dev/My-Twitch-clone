@@ -7,7 +7,7 @@ defineProps<Stream>();
   <div class="channel-container">
     <img
       class="channel-img"
-      src="https://pbs.twimg.com/media/Gm-ryLzWEAATbFq?format=jpg&name=large"
+      :src="`https://static-cdn.jtvnw.net/jtv_user_pictures/${user_id}-profile_image-70x70.png`"
     />
     <div class="channel-name">
       <p class="channel-name__text">{{ user_name }}</p>
