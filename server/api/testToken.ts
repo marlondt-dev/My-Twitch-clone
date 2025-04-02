@@ -12,7 +12,7 @@ export default defineEventHandler(async (): Promise<ApiResponse> => {
     
     const token = await getAppAccessToken()
     
-    // 2. Verificar que el token existe
+   
     if (!token) {
       throw new Error('El token recibido está vacío')
     }

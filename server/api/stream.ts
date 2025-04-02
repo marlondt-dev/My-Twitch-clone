@@ -8,7 +8,7 @@ export default defineEventHandler(async () => {
     if (!clientId) throw new Error("TWITCH_CLIENT_ID no está definido");
 
     const response = await $fetch(
-      "https://api.twitch.tv/helix/streams?first=3&language=en",
+      "https://api.twitch.tv/helix/streams?first=3&language=es",
       {
         method: "GET",
         headers: {

@@ -3,15 +3,12 @@ import { StreamsChannelContent } from "#components";
 import { useStreams } from "@/composables/useStreams";
 
 const { stream, loading, error } = useStreams();
-
-
-
 </script>
 <template>
   <div>
     <StreamsStreamContainer :name="'Live Channels'" :height="'live'">
       <div class="channels">
-        <div v-if="loading">Cargando streams...</div>
+        <div v-if="loading"><h2>Cargando streams...</h2></div>
         <div v-else-if="error">Error al cargar los streams</div>
         <StreamsChannelContent
           v-for="streams in stream"

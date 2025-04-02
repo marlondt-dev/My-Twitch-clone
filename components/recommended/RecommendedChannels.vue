@@ -1,16 +1,25 @@
 <script setup lang="ts">
-import type { RecommendedChannel } from "~/types/recommendedChannels";
+import type { Stream } from "@/types/stream";
 
-defineProps<RecommendedChannel>();
+defineProps<Stream>();
 </script>
 <template>
   <div class="channel-container">
-    <img class="channel-img" :src="channelIcon" />
+    <img
+      class="channel-img"
+      src="https://pbs.twimg.com/media/Gm-ryLzWEAATbFq?format=jpg&name=large"
+    />
     <div class="channel-name">
-      <p class="channel-name__text">{{ channelName }}</p>
-      <p class="channel-name__description">{{ channelDescription }}</p>
+      <p class="channel-name__text">{{ user_name }}</p>
+      <p class="channel-name__description">{{ game_name }}</p>
     </div>
-    <div class="channel-name__viewers"></div>
+    <div class="channel-name__viewers">
+      <img
+        class="channel-name__viewers__icon"
+        src="../../public/Background.png"
+      />
+      <p>{{ viewer_count }}</p>
+    </div>
   </div>
 </template>
 
@@ -46,7 +55,15 @@ defineProps<RecommendedChannel>();
   &__viewers {
     width: 2.5rem;
     height: 1.875rem;
-    background-color: gray;
+    @include text(400, 0.8125em, var(--text-color-white));
+    display: flex;
+    gap: 0.2em;
+
+    &__icon {
+      width: 0.5em;
+      height: 0.5em;
+      border-radius: 562.5em;
+    }
   }
 }
 </style>

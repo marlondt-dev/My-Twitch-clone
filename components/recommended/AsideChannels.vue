@@ -1,16 +1,20 @@
 <script setup lang="ts">
-import { recommendedChannels } from "@/mocks/recommendedChannels";
+import { useStreams } from "@/composables/useStreams";
+
+const { stream, loading, error } = useStreams();
 </script>
 <template>
   <aside class="chat">
     <div class="chat__text-container">
+      <div v-if="loading">Loading content...</div>
+      <div v-if="error">Error while loading...</div>
       <p>Recommended Channels</p>
-      <img src="../../public/reccommended-icon.png" >
+      <img src="../../public/reccommended-icon.png" />
     </div>
     <RecommendedChannels
-      v-for="recommendedChannel in recommendedChannels"
-      :key="recommendedChannel.id"
-      v-bind="recommendedChannel"
+      v-for="streams in stream"
+      :key="streams.id"
+      v-bind="streams"
     />
   </aside>
 </template>
