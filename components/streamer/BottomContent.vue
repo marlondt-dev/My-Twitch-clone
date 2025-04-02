@@ -10,16 +10,22 @@
         <div class="stream-content-top">
           <p class="stream-content-top__text">Miduxeneize</p>
           <div class="stream-content__buttons">
-            <MyButton :class="'blue'">Follow</MyButton>
-            <MyButton :class="'gray'">Subscribe</MyButton>
+            <MyButton :class="'blue'">
+              <img src="../../public/heart.png" /> Follow</MyButton
+            >
+            <MyButton :class="'gray'"
+              >Subscribe <img src="../../public/star.png" />
+            </MyButton>
           </div>
         </div>
         <div class="stream-content-middle">
           <p class="stream-content-middle__text">
             este es el titulo del stream actual
           </p>
-          <div class="stream-content-middle__viewers">Viewers</div>
-          <img src="../../public/Frame26.png" />
+          <div class="stream-content-middle__viewers">
+            Viewers
+            <img src="../../public/Frame26.png" />
+          </div>
         </div>
         <p class="stream-content__category">Talk Shows & Podcasts</p>
         <p class="stream-content__tags">tags</p>
@@ -31,14 +37,25 @@
       <p class="stream-description__text">
         Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aspernatur et
         consequatur obcaecati commodi eveniet perspiciatis cupiditate qui
-        dolorem, deserunt nihil dicta minus minima eius tenetur asperiores.
-        Laboriosam veniam incidunt qui!
+        dolorem.
       </p>
-      <div class="stream-description__rrss">
-        <img src="../../public/youtube.png" />
-        <img src="../../public/instagram.png" />
-        <img src="../../public/twitter.png" />
-        <img src="../../public/TikTok.png" />
+      <div class="stream-description-container">
+        <img
+          class="stream-description-container__rrss"
+          src="../../public/youtube.png"
+        />
+        <img
+          class="stream-description-container__rrss"
+          src="../../public/instagram.png"
+        />
+        <img
+          class="stream-description-container__rrss"
+          src="../../public/twitter.png"
+        />
+        <img
+          class="stream-description-container__rrss"
+          src="../../public/TikTok.png"
+        />
       </div>
     </article>
   </section>
@@ -145,7 +162,7 @@
 
 .stream-description {
   width: 50.375em;
-  height: 10.875em;
+  height: auto;
   padding: 1.25em;
   background-color: var(--bg-color-gray);
   display: flex;
@@ -161,11 +178,16 @@
     font-weight: 400;
   }
 
-  &__rrss {
+  &-container {
     width: 47.875em;
     height: 2.5625em;
     border-top: 0.1em solid gray;
     padding: 1em 0;
+    margin: 0 auto;
+
+    &__rrss {
+      margin-right: 1em;
+    }
   }
 }
 </style>

@@ -31,7 +31,8 @@
     list-style: none;
  }
 
- h2{
+ h2, h3{
    color: var(--text-color-white);
    text-align: center;
  }
+

@@ -26,7 +26,14 @@ defineProps<Category>();
   &__img {
     width: 11.3544em;
     height: 15.1387em;
+    transition: 0.3s ease;
   }
+}
+
+.card__img:hover {
+  -webkit-box-shadow: -12px 7px 5px -1px rgba(219, 15, 219, 1);
+  -moz-box-shadow: -12px 7px 5px -1px rgba(219, 15, 219, 1);
+  box-shadow: -12px 7px 5px -1px rgba(219, 15, 219, 1);
 }
 
 .card-details {

@@ -1,21 +1,30 @@
 <script setup lang="ts">
-import type {Stream} from '@/types/stream'
-
+import type { Stream } from "@/types/stream";
 
 defineProps<Stream>();
 </script>
 <template>
   <div class="details-container">
     <NuxtLink to="/streamer">
-      <img :src="thumbnail_url.replace('{width}', '382').replace('{height}', '210')" >
-</NuxtLink>
+      <img
+        :src="
+          thumbnail_url.replace('{width}', '382').replace('{height}', '210')
+        "
+      />
+    </NuxtLink>
 
     <div class="live-details">
-
-      <img class="live-details__img" :src="thumbnail_url" >
+      <img
+        class="live-details__img"
+        :src="
+          'https://static-cdn.jtvnw.net/jtv_user_pictures/' +
+          user_id +
+          '-profile_image-70x70.png'
+        "
+      />
       <div class="live-details__container">
         <p class="live-details__title">{{ title }}</p>
-        <p class="live-details__user">{{user_name }}</p>
+        <p class="live-details__user">{{ user_name }}</p>
         <p class="live-details__category">{{ game_name }}</p>
       </div>
     </div>

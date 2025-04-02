@@ -6,11 +6,11 @@ const { stream, loading, error } = useStreams();
 <template>
   <aside class="chat">
     <div class="chat__text-container">
-      <div v-if="loading">Loading content...</div>
-      <div v-if="error"><h2>Error while loading...</h2></div>
       <p>Recommended Channels</p>
       <img src="../../public/reccommended-icon.png" />
     </div>
+    <div v-if="loading"><h3>Loading content...</h3></div>
+    <div v-if="error"><h2>Error while loading...</h2></div>
     <RecommendedChannels
       v-for="streams in stream"
       :key="streams.id"

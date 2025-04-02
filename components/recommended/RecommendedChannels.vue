@@ -10,14 +10,13 @@ defineProps<Stream>();
       :src="`https://static-cdn.jtvnw.net/jtv_user_pictures/${user_id}-profile_image-70x70.png`"
     />
     <div class="channel-name">
-      <p class="channel-name__text">{{ user_name }}</p>
+      <NuxtLink to="/streamer"
+        ><p class="channel-name__text">{{ user_name }}</p></NuxtLink
+      >
       <p class="channel-name__description">{{ game_name }}</p>
     </div>
     <div class="channel-name__viewers">
-      <img
-        class="channel-name__viewers__icon"
-        src="../../public/Background.png"
-      />
+      <img class="channel-name__icon" src="../../public/Background.png" />
       <p>{{ viewer_count }}</p>
     </div>
   </div>
@@ -58,12 +57,11 @@ defineProps<Stream>();
     @include text(400, 0.8125em, var(--text-color-white));
     display: flex;
     gap: 0.2em;
-
-    &__icon {
-      width: 0.5em;
-      height: 0.5em;
-      border-radius: 562.5em;
-    }
+  }
+  &__icon {
+    width: 0.5em;
+    height: 0.5em;
+    border-radius: 562.5em;
   }
 }
 </style>
