@@ -1,23 +1,22 @@
 <script setup lang="ts">
-import type { DirectCard } from "@/types/directCard";
-import { useStreams } from "@/composables/useStreams";
+import type {Stream} from '@/types/stream'
 
-const { stream, loading, error } = useStreams();
 
-defineProps<DirectCard>();
+defineProps<Stream>();
 </script>
 <template>
   <div class="details-container">
     <NuxtLink to="/streamer">
-      <img :src="headerImg" class="details-container__img"
-    /></NuxtLink>
+      <img :src="thumbnail_url.replace('{width}', '382').replace('{height}', '210')" >
+</NuxtLink>
 
     <div class="live-details">
-      <img class="live-details__img" :src="icon" />
+
+      <img class="live-details__img" :src="thumbnail_url" >
       <div class="live-details__container">
         <p class="live-details__title">{{ title }}</p>
-        <p class="live-details__user">{{ userName }}</p>
-        <p class="live-details__category">{{ category }}</p>
+        <p class="live-details__user">{{user_name }}</p>
+        <p class="live-details__category">{{ game_name }}</p>
       </div>
     </div>
   </div>

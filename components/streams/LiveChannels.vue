@@ -1,15 +1,22 @@
 <script setup lang="ts">
 import { StreamsChannelContent } from "#components";
-import { directCards } from "@/mocks/directCards";
+import { useStreams } from "@/composables/useStreams";
+
+const { stream, loading, error } = useStreams();
+
+
+
 </script>
 <template>
   <div>
     <StreamsStreamContainer :name="'Live Channels'" :height="'live'">
       <div class="channels">
+        <div v-if="loading">Cargando streams...</div>
+        <div v-else-if="error">Error al cargar los streams</div>
         <StreamsChannelContent
-          v-for="directCard in directCards"
-          :key="directCard.id"
-          v-bind="directCard"
+          v-for="streams in stream"
+          :key="streams.id"
+          v-bind="streams"
         />
       </div>
     </StreamsStreamContainer>
