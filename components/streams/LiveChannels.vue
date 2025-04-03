@@ -2,7 +2,33 @@
 import { StreamsChannelContent } from "#components";
 import { useStreams } from "@/composables/useStreams";
 
-const { stream, loading, error } = useStreams();
+const props = defineProps({
+  first: {
+    type: Number,
+    default: 3
+  },
+  offset: {
+    type: Number,
+    default: 0
+  },
+  name: {
+    type: String,
+    default: "Live Channels"
+  },
+  height: {
+    type: String,
+    default: "live"
+  }
+});
+
+const after = ref('');
+
+const { stream, loading, cursor } = useStreams(3, after.value);
+
+
+const loadMore = () => {
+  after.value = cursor.value; 
+};
 </script>
 <template>
   <div>
