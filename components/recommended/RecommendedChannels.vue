@@ -7,7 +7,7 @@ defineProps<Stream>();
   <div class="channel-container">
     <img
       class="channel-img"
-      :src="`https://static-cdn.jtvnw.net/jtv_user_pictures/${user_id}-profile_image-70x70.png`"
+      :src="profile_image_url"
     />
     <div class="channel-name">
       <NuxtLink to="/streamer"
