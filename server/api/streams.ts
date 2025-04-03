@@ -1,22 +1,26 @@
-import axios from "axios";
-import { getAppAccessToken } from "../services/twitch";
+import { getAppAccessToken } from "@/server/services/twitch";
+export class GetApi {
+  constructor(apiUrl) {
+    this.apiUrl = apiUrl;
+  }
 
-export const getData = async () => {
-  try {
+  async getData(endpoint = null, params = {}) {
     const token = await getAppAccessToken();
     const clientId = process.env.TWITCH_CLIENT_ID;
+    const apiEndpoint = `this.apiUrl/${endpoint}?first=${params}`;
 
-    const response = await axios.get(
-      "https://api.twitch.tv/helix/streams?first=3",
-      {
+    try {
+      const response = await $fetch(apiEndpoint, {
+        method: "GET",
         headers: {
           "Client-ID": clientId,
           Authorization: `Bearer ${token}`,
         },
-      }
-    );
-    return response;
-  } catch (error) {
-    return error;
+      });
+
+      return response;
+    } catch (error) {
+      console.log(error);
+    }
   }
-};
+}

@@ -14,11 +14,11 @@ defineProps<Stream>();
     </NuxtLink>
 
     <div class="live-details">
-      <img
-        class="live-details__img"
-        :src="profile_image_url" >
+      <img class="live-details__img" :src="profile_image_url" />
       <div class="live-details__container">
-        <p class="live-details__title">{{ title }}</p>
+        <NuxtLink to="/streamer"
+          ><p class="live-details__title">{{ title }}</p></NuxtLink
+        >
         <p class="live-details__user">{{ user_name }}</p>
         <p class="live-details__category">{{ game_name }}</p>
       </div>
@@ -59,6 +59,11 @@ defineProps<Stream>();
 
   &__title {
     @include text(600, 0.875em, var(--text-color-white));
+    transition: 0.3s ease;
+  }
+
+  &__title:hover {
+    color: #a970ff;
   }
 
   &__user {

@@ -2,7 +2,6 @@ import { getAppAccessToken } from "@/server/services/twitch";
 
 export default defineEventHandler(async () => {
   const token = await getAppAccessToken();
-
   const clientId = process.env.TWITCH_CLIENT_ID;
   if (!clientId) throw new Error("TWITCH_CLIENT_ID no está definido");
 
