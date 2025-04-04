@@ -1,12 +1,13 @@
 <script setup lang="ts">
 import { useStreams } from "@/composables/useStreams";
+import { recommendedChannels } from "@/assets/data/texts.json";
 
-const { stream, loading, error } = useStreams("?first=8&language=es");
+const { stream, loading, error } = useStreams("?first=12&language=es");
 </script>
 <template>
   <aside class="chat">
     <div class="chat__text-container">
-      <p>Recommended Channels</p>
+      <p>{{ recommendedChannels.recommended }}</p>
       <img src="../../public/reccommended-icon.png" />
     </div>
     <div v-if="loading"><h3>Loading content...</h3></div>

@@ -7,4 +7,5 @@ export type Stream = {
   thumbnail_url: string;
   viewer_count: number;
   profile_image_url: string;
+  tags: string[];
 };

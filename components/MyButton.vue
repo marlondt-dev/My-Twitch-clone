@@ -17,6 +17,7 @@ defineProps<{
   display: flex;
   align-items: center;
   gap: 0.5em;
+  font-size: 0.8125em;
 }
 
 .blue {

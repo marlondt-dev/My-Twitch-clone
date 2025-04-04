@@ -1,4 +1,6 @@
-<script setup></script>
+<script setup lang="ts">
+import { streamerButtons } from "@/assets/data/texts.json";
+</script>
 <template>
   <section class="content-container">
     <div class="stream">
@@ -11,10 +13,13 @@
           <p class="stream-content-top__text">Miduxeneize</p>
           <div class="stream-content__buttons">
             <MyButton :class="'blue'">
-              <img src="../../public/heart.png" /> Follow</MyButton
-            >
+              <img src="../../public/heart.png" />
+              {{ streamerButtons.follow }}
+            </MyButton>
             <MyButton :class="'gray'"
-              >Subscribe <img src="../../public/star.png" />
+              >{{ streamerButtons.suscribe }}
+              <img src="../../public/star.png" />
+              <Icon name="cuida:caret-down-outline" size="24" />
             </MyButton>
           </div>
         </div>
@@ -28,7 +33,7 @@
           </div>
         </div>
         <p class="stream-content__category">Talk Shows & Podcasts</p>
-        <p class="stream-content__tags">tags</p>
+        <span class="stream-content__tags">tags</span>
       </article>
     </div>
     <p class="about">About Miduuxeneize</p>

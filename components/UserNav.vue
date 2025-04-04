@@ -1,10 +1,16 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { navButtons } from "@/assets/data/texts.json";
+</script>
 <template>
   <div class="user-container">
     <div><img src="../public/button-prime.png" /></div>
     <ul class="user-buttons">
-      <li><MyButton :class="'gray'">Log in</MyButton></li>
-      <li><MyButton :class="'blue'">Sign Up </MyButton></li>
+      <li>
+        <MyButton :class="'gray'">{{ navButtons.login }}</MyButton>
+      </li>
+      <li>
+        <MyButton :class="'blue'">{{ navButtons["sign up"] }}</MyButton>
+      </li>
       <li>
         <div><img src="../public/account.png" /></div>
       </li>

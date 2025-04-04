@@ -1,11 +1,12 @@
 <script setup lang="ts">
 import { StreamsChannelContent } from "#components";
 import { useStreams } from "@/composables/useStreams";
+
 const { stream, error, loading } = useStreams("?first=3&language=es");
 </script>
 <template>
   <div>
-    <StreamsStreamContainer :name="'Live Channels'" :height="'live'">
+    <StreamsStreamContainer :name="'Live channels'" :height="'live'">
       <div class="channels">
         <div v-if="loading"><h3>Loading content...</h3></div>
         <div v-if="error"><h2>Error while loading...</h2></div>

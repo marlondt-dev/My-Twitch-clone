@@ -21,6 +21,7 @@ defineProps<Stream>();
         >
         <p class="live-details__user">{{ user_name }}</p>
         <p class="live-details__category">{{ game_name }}</p>
+        <span>{{ tags[0] }}{{ tags[1] }}</span>
       </div>
     </div>
   </div>
@@ -66,12 +67,17 @@ defineProps<Stream>();
     color: #a970ff;
   }
 
+  &__category:hover {
+    color: #a970ff;
+  }
+
   &__user {
     @include text(400, 0.8125em, var(--text-color-gray));
   }
 
   &__category {
     @include text(400, 0.8125em, var(--text-color-gray));
+    transition: 0.3s ease;
   }
 }
 </style>

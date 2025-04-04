@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { channelContainers } from "@/assets/data/texts.json";
+
 defineProps<{
   name: string;
   height?: "live" | "category";
@@ -11,7 +13,7 @@ defineProps<{
         <span class="channels-container__text channels-container__text--blue">{{
           name
         }}</span>
-        we think you'll like
+        {{ channelContainers.like }}
       </p>
       <slot />
     </section>
