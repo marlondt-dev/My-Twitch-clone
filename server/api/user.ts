@@ -1,22 +1,12 @@
-// import { useFetch } from "nuxt/app";
-// import { useRuntimeConfig } from "#imports";
+export class useApi {
 
-// export const useUser = (userLogin: string) => {
-//   const config = useRuntimeConfig();
+    private static BASE_URL = "https://api.twitch.tv/helix"
 
-//   const { data, pending, error } = useFetch(
-//     `https://api.twitch.tv/helix/users?login=${userLogin}`,
-//     {
-//       headers: {
-//         "Client-ID": config.public.twitchClientId,
-//         Authorization: `Bearer ${config.public.twitchAccessToken}`,
-//       },
-//     }
-//   );
+    static get stream () {
+        return `${this.BASE_URL}/streams`;
+    }
 
-//   return {
-//     user: data,
-//     loading: pending,
-//     error,
-//   };
-// };
+    static get  categories (){
+        return `${this.BASE_URL}/games/top`
+    }
+}

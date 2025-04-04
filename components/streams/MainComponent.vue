@@ -3,12 +3,12 @@ import { StreamsDivisionLine } from "#components";
 </script>
 <template>
   <main class="main-container">
-    <StreamsLiveChannels  :first="3" :after="cursor"/>
+    <StreamsLiveChannels />
     <StreamsDivisionLine  />
-    <StreamsLiveChannels :first="3" :offset="6"/>
+    <StreamsLiveChannels />
     <StreamsDivisionLine />
     <StreamsCategories />
-    <StreamsLiveChannels :first="3" :offset="9"/>
+    <StreamsLiveChannels />
     <StreamsDivisionLine />
     <StreamsLiveChannels />
   </main>

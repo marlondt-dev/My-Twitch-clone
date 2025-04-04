@@ -1,45 +1,26 @@
 <script setup lang="ts">
 import { StreamsChannelContent } from "#components";
-import { useStreams } from "@/composables/useStreams";
+// import { useStreams } from "@/composables/useStreams";
+import {useTwitch} from '@/composables/useTwitch'
+import type { Stream } from "@/types/stream";
+// const { stream, loading, error } = useStreams();
+const streams = ref<any[]>([])
 
-const props = defineProps({
-  first: {
-    type: Number,
-    default: 3
-  },
-  offset: {
-    type: Number,
-    default: 0
-  },
-  name: {
-    type: String,
-    default: "Live Channels"
-  },
-  height: {
-    type: String,
-    default: "live"
-  }
+onMounted(async () => {
+  const { twitchAPI } = await useTwitch();
+  const data = await twitchAPI.fetchData<{ data: Stream[] }>("streams");
+streams.value = data.data;
 });
 
-const after = ref('');
-
-const { stream, loading, cursor } = useStreams(3, after.value);
-
-
-const loadMore = () => {
-  after.value = cursor.value; 
-};
 </script>
 <template>
   <div>
     <StreamsStreamContainer :name="'Live Channels'" :height="'live'">
       <div class="channels">
-        <div v-if="loading"><h3>Loading content...</h3></div>
-        <div v-else-if="error"><h3>Error while loding content</h3></div>
         <StreamsChannelContent
-          v-for="streams in stream"
-          :key="streams.id"
-          v-bind="streams"
+          v-for="stream in streams"
+          :key="stream.id"
+          :stream="stream"
         />
       </div>
     </StreamsStreamContainer>
