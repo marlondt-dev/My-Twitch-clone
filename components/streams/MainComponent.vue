@@ -4,7 +4,11 @@ import { StreamsDivisionLine } from "#components";
 <template>
   <main class="main-container">
     <StreamsLiveChannels />
+<<<<<<< HEAD
     <StreamsDivisionLine />
+=======
+    <StreamsDivisionLine  />
+>>>>>>> 11d07956dd41abffda79498b87db277de3d2fe5e
     <StreamsLiveChannels />
     <StreamsDivisionLine />
     <StreamsCategories />

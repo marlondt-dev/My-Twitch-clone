@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useStreams } from "@/composables/useStreams";
 
-const { stream, loading, error } = useStreams();
+const { stream, loading, error } = useStreams("?first=8&language=es");
 </script>
 <template>
   <aside class="chat">

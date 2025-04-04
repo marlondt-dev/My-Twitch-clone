@@ -1,15 +1,14 @@
 <script setup lang="ts">
 import { StreamsChannelContent } from "#components";
 import { useStreams } from "@/composables/useStreams";
-
-const { error, stream, loading } = useStreams();
+const { stream, error, loading } = useStreams("?first=3&language=es");
 </script>
 <template>
   <div>
     <StreamsStreamContainer :name="'Live Channels'" :height="'live'">
       <div class="channels">
         <div v-if="loading"><h3>Loading content...</h3></div>
-        <div v-else-if="error"><h3>Error while loding content</h3></div>
+        <div v-if="error"><h2>Error while loading...</h2></div>
         <StreamsChannelContent
           v-for="streams in stream"
           :key="streams.id"
