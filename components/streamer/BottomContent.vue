@@ -1,5 +1,24 @@
 <script setup lang="ts">
 import { streamerButtons } from "@/assets/data/texts.json";
+import type { User } from "@/types/users";
+import { useTwitchData } from "@/composables/useTwitchData";
+
+const route = useRoute();
+const username = route.params.username;
+
+const { data: users } = useTwitchData<User>(
+  "users",
+  { login: username },
+  { componentId: "streamer-frame" }
+);
+
+// const { data: streams } = useTwitchData(
+//   "streams",
+//   { user_login: username },
+//   { componentId: "stream-info" }
+// );
+
+console.log(users);
 </script>
 <template>
   <section class="content-container">
@@ -10,7 +29,7 @@ import { streamerButtons } from "@/assets/data/texts.json";
       />
       <article class="stream-content">
         <div class="stream-content-top">
-          <p class="stream-content-top__text">Miduxeneize</p>
+          <p class="stream-content-top__text">{{ users }}</p>
           <div class="stream-content__buttons">
             <MyButton :class="'blue'">
               <img src="../../public/heart.png" />

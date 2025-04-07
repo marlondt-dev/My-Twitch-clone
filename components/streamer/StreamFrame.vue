@@ -1,14 +1,34 @@
-<script setup></script>
+<script setup lang="ts">
+const route = useRoute();
+const username = route.params.username;
+const hostname = ref("");
+
+onMounted(() => {
+  hostname.value = window.location.hostname;
+});
+</script>
 <template>
   <main class="streamer-container">
     <div class="streamer-content">
-      <img
-        class="stream-content__img"
-        src="https://pbs.twimg.com/media/GM5aSRkXYAAv_0J?format=jpg&name=large "
-      />
+      <iframe
+        :src="`https://player.twitch.tv/?channel=${username}&parent=${hostname}&muted=false`"
+        height="720"
+        width="100%"
+        allowfullscreen
+      >
+      </iframe>
       <StreamerBottomContent />
     </div>
-    <aside><StreamerStreamChat /></aside>
+    <aside>
+      <div>
+        <iframe
+          :src="`https://www.twitch.tv/embed/${username}/chat?parent=${hostname}`"
+          height="720"
+          width="100%"
+        >
+        </iframe>
+      </div>
+    </aside>
   </main>
 </template>
 

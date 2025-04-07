@@ -2,24 +2,25 @@
 import type { Stream } from "@/types/stream";
 
 defineProps<{
-  stream: Stream
-}>()
+  stream: Stream;
+}>();
 </script>
 <template>
   <div class="details-container">
-    <NuxtLink to="/streamer">
+    <NuxtLink :to="`/streamer/${stream.user_login}`">
       <img
         :src="
-          stream.thumbnail_url.replace('{width}', '382').replace('{height}', '210')
+          stream.thumbnail_url
+            .replace('{width}', '382')
+            .replace('{height}', '210')
         "
       />
     </NuxtLink>
-
     <div class="live-details">
       <img class="live-details__img" :src="stream.profile_image_url" />
       <div class="live-details__container">
-        <NuxtLink to="/streamer"
-          ><p class="live-details__title">{{ stream.game_name }}</p></NuxtLink
+        <NuxtLink :to="`/streamer/${stream.user_login}`"
+          ><p class="live-details__title">{{ stream.title }}</p></NuxtLink
         >
         <p class="live-details__user">{{ stream.user_name }}</p>
         <p class="live-details__category">{{ stream.game_name }}</p>
