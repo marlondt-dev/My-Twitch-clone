@@ -9,14 +9,12 @@ defineProps<{
   <div class="details-container">
     <NuxtLink :to="`/streamer/${stream.user_login}`">
       <div class="image-container">
-    <img
+    <img class="thumbnail"
       :src="
         stream.thumbnail_url
           .replace('{width}', '382')
           .replace('{height}', '210')
-      "
-      class="thumbnail"
-    />
+      "/>
   </div>
     </NuxtLink>
     <div class="live-details">
@@ -30,7 +28,7 @@ defineProps<{
         <p class="live-details__category">{{ stream.game_name }}</p>
         <div  v-if="stream.tags && stream.tags.length > 0" class="tags-container">
     <span 
-      v-for="(tag, index) in stream.tags.slice(0, 3)" 
+      v-for="(tag, index) in stream.tags.slice(0, 4)" 
       :key="index" 
       class="tag"
     >
@@ -48,12 +46,10 @@ defineProps<{
   height: auto;
   background-color: var( --bg-color);
   color: white;
-  overflow: hidden;
+  overflow: visible; 
+  position: relative;
 
-  &__img {
-    width: 23.875em;
-    height: 13.1512em;
-  }
+  
 }
 
 
@@ -105,22 +101,23 @@ defineProps<{
 
 .image-container {
   position: relative;
-  border-radius: 4px;
-  overflow: visible; /* Asegúrate de que la sombra no se recorte */
+  border-radius:  0.25em;
+  overflow: visible;
 }
 
 .thumbnail {
   width: 100%;
   height: auto;
   display: block;
-  border-radius: 4px;
-  transition: transform 0.2s ease, box-shadow 0.2s ease; /* Agrega box-shadow a la transición */
+  border-radius: 0.25em;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  position: relative; 
+  z-index: 1;
 }
 
-/* Efecto hover - Movimiento + Sombra externa morada */
 .image-container:hover .thumbnail {
-  transform: translate(0.375em, -0.375em);
-  box-shadow: -0.375em 4px 0 rgba(145, 70, 255, 0.6); /* Sombra abajo-izquierda */
+  transform: translate(0.5em, -0.5em); 
+  box-shadow: -0.5em 0.5em 0 rgba(145, 70, 255, 0.6); 
 }
 .tags-container {
   display: flex;
