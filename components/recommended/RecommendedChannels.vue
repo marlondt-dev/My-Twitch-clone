@@ -16,7 +16,7 @@ defineProps<Stream>();
     </div>
     <div class="channel-name__viewers">
       <img class="channel-name__icon" src="../../public/Background.png" />
-      <p>{{ viewer_count }}</p>
+      <p>{{ viewer_count }}k</p>
     </div>
   </div>
 </template>
@@ -40,6 +40,7 @@ defineProps<Stream>();
 .channel-name {
   width: 8.75rem;
   height: 1.875rem;
+  @include flex(column, left, space-between);
 
   &__text {
     @include text(600, 0.875em, var(--text-color-white));

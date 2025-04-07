@@ -3,7 +3,7 @@ import { navButtons } from "@/assets/data/texts.json";
 </script>
 <template>
   <div class="user-container">
-    <div><img src="../public/button-prime.png" /></div>
+    <div><Icon name="iconoir-crown" size="28" style="color: white" /></div>
     <ul class="user-buttons">
       <li>
         <MyButton :class="'gray'">{{ navButtons.login }}</MyButton>

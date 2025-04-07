@@ -30,7 +30,6 @@ const streamParams = {
 if (props.gameId) {
   streamParams.game_id = props.gameId;
 }
-
 const {
   data: streams,
   error,
