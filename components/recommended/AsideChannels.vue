@@ -11,7 +11,7 @@ const {
 } = useTwitchData<Stream>(
   "streams",
   {
-    first: 12,
+    first: 10,
     language: "es",
   },
   {

@@ -66,7 +66,7 @@ onMounted(() => {
 <style lang="scss" scoped>
 .channels-container {
   width: 76.25em;
-  height: 21.91em;
+  height: auto;
 
   &__text {
     @include text(600, 1.125em, var(--btn-text-color));
@@ -82,6 +82,6 @@ onMounted(() => {
   grid-template-columns: 1fr 1fr 1fr;
   gap: 2.3125rem;
   width: 76.25em;
-  height: 19.9em;
+  height: auto;
 }
 </style>

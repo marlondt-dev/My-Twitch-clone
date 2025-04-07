@@ -23,6 +23,7 @@ defineProps<{
 <style lang="scss" scoped>
 .channels-container {
   width: 76.25em;
+  margin: 1em;
 
   &__text {
     @include text(600, 1.125em, var(--btn-text-color));

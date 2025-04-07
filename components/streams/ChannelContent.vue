@@ -24,7 +24,15 @@ defineProps<{
         >
         <p class="live-details__user">{{ stream.user_name }}</p>
         <p class="live-details__category">{{ stream.game_name }}</p>
-        <span>{{ stream.tags[0] }}{{ stream.tags[1] }}</span>
+        <div  v-if="stream.tags && stream.tags.length > 0" class="tags-container">
+    <span 
+      v-for="(tag, index) in stream.tags.slice(0, 2)" 
+      :key="index" 
+      class="tag"
+    >
+      {{ tag }}
+    </span>
+  </div>
       </div>
     </div>
   </div>
@@ -33,9 +41,10 @@ defineProps<{
 <style lang="scss" scoped>
 .details-container {
   max-width: 23.87em;
-  height: 19.901em;
+  height: auto;
   background-color: black;
   color: white;
+  overflow: hidden;
 
   &__img {
     width: 23.875em;
@@ -43,15 +52,26 @@ defineProps<{
   }
 }
 
+.details-container:hover{
+    transform: translate(-0.25em, -0.25em); 
+  box-shadow: 0.25em 0.25em 0 rgba(145, 70, 255, 0.6); 
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .details-container:hover img {
+  transform: scale(1.03);
+  transition: transform 0.3s ease;
+}
+
 .live-details {
   width: 23.875em;
-  height: 6.125em;
+  height: auto;
   display: flex;
   justify-content: space-between;
 
   &__container {
     width: 20.4375em;
-    height: 6.125em;
+    height: auto;
     @include flex(column, left, space-evenly);
   }
 
@@ -64,6 +84,10 @@ defineProps<{
   &__title {
     @include text(600, 0.875em, var(--text-color-white));
     transition: 0.3s ease;
+    white-space: nowrap;       
+    overflow: hidden;          
+    text-overflow: ellipsis; 
+    max-width: 100%; 
   }
 
   &__title:hover {
@@ -82,5 +106,20 @@ defineProps<{
     @include text(400, 0.8125em, var(--text-color-gray));
     transition: 0.3s ease;
   }
+}
+
+.tags-container {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.tag {
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25em;
+  @include text(500, 0.75em, #bf94ff);
+  border: 0.063em solid rgba(145, 70, 255, 0.2);
 }
 </style>
