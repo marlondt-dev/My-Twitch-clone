@@ -1,6 +1,6 @@
+// useTwitchData.ts
 import { TwitchAPI } from '@/server/services/twitchApi';
 import type { Stream } from '@/types/stream';
-
 
 type Endpoint = 'streams' | 'games/top' | 'users';
 type TwitchResponse<T> = { data: T[] };
@@ -8,27 +8,20 @@ type TwitchResponse<T> = { data: T[] };
 const fetchStreamsWithProfiles = async (api: TwitchAPI, params: Record<string, any>) => {
   try {
     const streamsResult = await api.fetch<{ data: Stream[] }>('streams', params);
-    
     if (!streamsResult.data || streamsResult.data.length === 0) {
       return streamsResult;
     }
-    
     const userIds = streamsResult.data.map(stream => stream.user_id);
-    
-    for (const userId of userIds) {
-      const userResult = await api.fetch<{ data: any[] }>('users', { id: userId });
-      
-      if (userResult.data && userResult.data.length > 0) {
-        const user = userResult.data[0];
-        
-        const stream = streamsResult.data.find(s => s.user_id === userId);
-        if (stream) {
+    const usersResult = await api.fetch<{ data: any[] }>('users', { id: userIds });
+    if (usersResult.data) {
+      streamsResult.data.forEach(stream => {
+        const user = usersResult.data.find(u => u.id === stream.user_id);
+        if (user) {
           stream.profile_image_url = user.profile_image_url;
           stream.offline_image_url = user.offline_image_url;
         }
-      }
+      });
     }
-    
     return streamsResult;
   } catch (error) {
     console.error('Error fetching streams with profiles:', error);
@@ -46,28 +39,26 @@ export const useTwitchData = <T>(
 ) => {
   const api = new TwitchAPI();
   const componentId = options.componentId || 'default';
-  
+
   const params = reactive({
     first: 6,
     ...initialParams,
   });
-  
+
   const initialData = useState<TwitchResponse<T>>(`twitch-${endpoint}-${componentId}-initial`, () => ({ data: [] }));
-  
+
   const baseKey = `twitch-${endpoint}-${componentId}`;
-  
+
   const { data, error, pending, refresh } = useAsyncData<TwitchResponse<T>>(
     baseKey,
     async () => {
       try {
         let result;
-        
         if (endpoint === 'streams' && options.includeUserProfiles) {
           result = await fetchStreamsWithProfiles(api, params);
         } else {
           result = await api.fetch<TwitchResponse<T>>(endpoint, params);
         }
-        
         initialData.value = result as TwitchResponse<T>;
         return result as TwitchResponse<T>;
       } catch (err) {
@@ -99,19 +90,19 @@ export const useTwitchData = <T>(
   }, { immediate: false });
 
   const refreshInterval = ref<number | null>(null);
-  
+
   const startPeriodicRefresh = (intervalMs = 60000) => {
     stopPeriodicRefresh();
     refreshInterval.value = window.setInterval(safeRefresh, intervalMs);
   };
-  
+
   const stopPeriodicRefresh = () => {
     if (refreshInterval.value !== null) {
       clearInterval(refreshInterval.value);
       refreshInterval.value = null;
     }
   };
-  
+
   onUnmounted(stopPeriodicRefresh);
 
   const items = computed(() => {

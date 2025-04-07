@@ -1,10 +1,15 @@
+// twitchApi.ts
 export class TwitchAPI {
   private clientId = process.env.TWITCH_CLIENT_ID!;
   private clientSecret = process.env.TWITCH_CLIENT_SECRET!;
+  private token: { value: string | null; expiry: number | null } = { value: null, expiry: null };
 
   private async getToken() {
+    if (this.token.value && this.token.expiry && Date.now() < this.token.expiry) {
+      return this.token.value;
+    }
     try {
-      const res = await $fetch<{ access_token: string }>(
+      const res = await $fetch<{ access_token: string; expires_in: number }>(
         "https://id.twitch.tv/oauth2/token",
         {
           method: "POST",
@@ -15,6 +20,8 @@ export class TwitchAPI {
           },
         }
       );
+      this.token.value = res.access_token;
+      this.token.expiry = Date.now() + res.expires_in * 1000;
       return res.access_token;
     } catch (error) {
       console.error("Error getting Twitch token:", error);
