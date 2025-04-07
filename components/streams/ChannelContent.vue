@@ -1,27 +1,29 @@
 <script setup lang="ts">
 import type { Stream } from "@/types/stream";
 
-defineProps<Stream>();
+defineProps<{
+  stream: Stream
+}>()
 </script>
 <template>
   <div class="details-container">
     <NuxtLink to="/streamer">
       <img
         :src="
-          thumbnail_url.replace('{width}', '382').replace('{height}', '210')
+          stream.thumbnail_url.replace('{width}', '382').replace('{height}', '210')
         "
       />
     </NuxtLink>
 
     <div class="live-details">
-      <img class="live-details__img" :src="profile_image_url" />
+      <img class="live-details__img" :src="stream.profile_image_url" />
       <div class="live-details__container">
         <NuxtLink to="/streamer"
-          ><p class="live-details__title">{{ title }}</p></NuxtLink
+          ><p class="live-details__title">{{ stream.game_name }}</p></NuxtLink
         >
-        <p class="live-details__user">{{ user_name }}</p>
-        <p class="live-details__category">{{ game_name }}</p>
-        <span>{{ tags[0] }}{{ tags[1] }}</span>
+        <p class="live-details__user">{{ stream.user_name }}</p>
+        <p class="live-details__category">{{ stream.game_name }}</p>
+        <span>{{ stream.tags[0] }}{{ stream.tags[1] }}</span>
       </div>
     </div>
   </div>

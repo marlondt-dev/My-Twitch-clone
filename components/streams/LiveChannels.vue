@@ -1,25 +1,68 @@
 <script setup lang="ts">
 import { StreamsChannelContent } from "#components";
-import { useStreams } from "@/composables/useStreams";
+import { useTwitchData } from "@/composables/useTwitchData";
+import type { Stream } from '@/types/stream';
 
-const { stream, error, loading } = useStreams("?first=3&language=es");
+const props = defineProps({
+  sectionId: {
+    type: String,
+    default: 'main'
+  },
+  title: {
+    type: String,
+    default: 'Live channels'
+  },
+  language: {
+    type: String,
+    default: 'es'
+  },
+  gameId: {
+    type: String,
+    default: ''
+  }
+});
+
+const streamParams = {
+  first: 3,
+  language: props.language
+};
+
+if (props.gameId) {
+  streamParams.game_id = props.gameId;
+}
+
+const { 
+  data: streams, 
+  error, 
+  pending, 
+  startPeriodicRefresh 
+} = useTwitchData<Stream>('streams', streamParams, {
+  includeUserProfiles: true,
+  componentId: `live-channels-${props.sectionId}`
+});
+
+// Iniciar actualización periódica
+onMounted(() => {
+  startPeriodicRefresh(60000);
+});
 </script>
+
 <template>
-  <div>
-    <StreamsStreamContainer :name="'Live channels'" :height="'live'">
-      <div class="channels">
-        <div v-if="loading"><h3>Loading content...</h3></div>
-        <div v-if="error"><h2>Error while loading...</h2></div>
+  <div class="channels-container">
+    <StreamsStreamContainer :name="title" height="live">
+      <div v-if="pending && streams.length === 0"><h3>Loading content...</h3></div>
+      <div v-else-if="error"><h2>Error while loading...</h2></div>
+      <div v-else-if="streams.length === 0"><h3>No streams available</h3></div>
+      <div v-else class="channels">
         <StreamsChannelContent
-          v-for="streams in stream"
-          :key="streams.id"
-          v-bind="streams"
+          v-for="stream in streams"
+          :key="stream.id"
+          :stream="stream"
         />
       </div>
     </StreamsStreamContainer>
   </div>
 </template>
-
 <style lang="scss" scoped>
 .channels-container {
   width: 76.25em;

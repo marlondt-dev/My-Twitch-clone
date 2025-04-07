@@ -1,21 +1,32 @@
 <script setup lang="ts">
-import { useStreams } from "@/composables/useStreams";
+// import { useStreams } from "@/composables/useStreams";
+import {useTwitchData} from '@/composables/useTwitchData'
 import { recommendedChannels } from "@/assets/data/texts.json";
+import type {Stream} from '@/types/stream'
 
-const { stream, loading, error } = useStreams("?first=12&language=es");
+const {data: streams, error, startPeriodicRefresh} = useTwitchData<Stream>('streams', {
+  first: 8,
+  language: 'es'
+}, {
+  includeUserProfiles: true,
+  componentId: 'aside-channels'
+});
+
+onMounted(() => {
+  startPeriodicRefresh(1000);
+});
 </script>
 <template>
   <aside class="chat">
     <div class="chat__text-container">
       <p>{{ recommendedChannels.recommended }}</p>
-      <img src="../../public/reccommended-icon.png" />
+      <img src="../../public/reccommended-icon.png">
     </div>
-    <div v-if="loading"><h3>Loading content...</h3></div>
     <div v-if="error"><h2>Error while loading...</h2></div>
     <RecommendedChannels
-      v-for="streams in stream"
-      :key="streams.id"
-      v-bind="streams"
+      v-for="stream in streams"
+      :key="stream.id"
+      v-bind="stream"
     />
   </aside>
 </template>
@@ -24,13 +35,14 @@ const { stream, loading, error } = useStreams("?first=12&language=es");
 .chat {
   width: 16.25em;
   height: 22.81em;
+  
 
   &__text-container {
     width: 16.25rem;
     height: 2.25rem;
     padding: 0.625rem 0.3125rem;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
     align-items: center;
     color: var(--btn-text-color);
     text-transform: uppercase;

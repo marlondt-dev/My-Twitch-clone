@@ -4,13 +4,18 @@ import { StreamsDivisionLine } from "#components";
 <template>
   <main class="main-container">
     <StreamsLiveChannels />
-<<<<<<< HEAD
     <StreamsDivisionLine />
-=======
-    <StreamsDivisionLine  />
->>>>>>> 11d07956dd41abffda79498b87db277de3d2fe5e
-    <StreamsLiveChannels />
-    <StreamsDivisionLine />
+ 
+    <StreamsLiveChannels 
+      section-id="english" 
+      title="English streams" 
+      language="en" 
+    />
+    <StreamsLiveChannels 
+      section-id="fortnite" 
+      title="Fortnite streams" 
+      game-id="33214" 
+    />
     <StreamsCategories />
     <StreamsLiveChannels />
     <StreamsDivisionLine />

@@ -6,6 +6,7 @@ export type Stream = {
   game_name: string;
   thumbnail_url: string;
   viewer_count: number;
-  profile_image_url: string;
+  profile_image_url?: string;
+  offline_image_url?: string;
   tags: string[];
 };

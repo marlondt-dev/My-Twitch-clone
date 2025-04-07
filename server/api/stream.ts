@@ -1,4 +1,4 @@
-import { getAppAccessToken } from "@/server/services/twitch";
+import { getAppAccessToken } from "~/server/services/twitch";
 
 export default defineEventHandler(async (event) => {
   const token = await getAppAccessToken();
