@@ -5,21 +5,29 @@ import { StreamsDivisionLine } from "#components";
   <main class="main-container">
     <StreamsLiveChannels />
     <StreamsDivisionLine />
- 
-    <StreamsLiveChannels 
-      section-id="english" 
-      title="English streams" 
-      language="en" 
+
+    <StreamsLiveChannels
+      section-id="english"
+      title="English streams"
+      language="en"
     />
-    <StreamsLiveChannels 
-      section-id="fortnite" 
-      title="Fortnite streams" 
-      game-id="33214" 
+    <StreamsLiveChannels
+      section-id="fortnite"
+      title="Fortnite streams"
+      game-id="33214"
     />
     <StreamsCategories />
-    <StreamsLiveChannels />
+    <StreamsLiveChannels
+      section-id="league"
+      title="League of Legends"
+      game-id="21779"
+    />
     <StreamsDivisionLine />
-    <StreamsLiveChannels />
+    <StreamsLiveChannels
+      section-id="Warzone"
+      title="Warzone"
+      game-id="512710"
+    />
   </main>
 </template>
 

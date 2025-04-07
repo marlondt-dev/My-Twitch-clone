@@ -1,16 +1,24 @@
 <script setup lang="ts">
 // import { useStreams } from "@/composables/useStreams";
-import {useTwitchData} from '@/composables/useTwitchData'
+import { useTwitchData } from "@/composables/useTwitchData";
 import { recommendedChannels } from "@/assets/data/texts.json";
-import type {Stream} from '@/types/stream'
+import type { Stream } from "@/types/stream";
 
-const {data: streams, error, startPeriodicRefresh} = useTwitchData<Stream>('streams', {
-  first: 8,
-  language: 'es'
-}, {
-  includeUserProfiles: true,
-  componentId: 'aside-channels'
-});
+const {
+  data: streams,
+  error,
+  startPeriodicRefresh,
+} = useTwitchData<Stream>(
+  "streams",
+  {
+    first: 12,
+    language: "es",
+  },
+  {
+    includeUserProfiles: true,
+    componentId: "aside-channels",
+  }
+);
 
 onMounted(() => {
   startPeriodicRefresh(1000);
@@ -20,7 +28,7 @@ onMounted(() => {
   <aside class="chat">
     <div class="chat__text-container">
       <p>{{ recommendedChannels.recommended }}</p>
-      <img src="../../public/reccommended-icon.png">
+      <img src="../../public/reccommended-icon.png" />
     </div>
     <div v-if="error"><h2>Error while loading...</h2></div>
     <RecommendedChannels
@@ -35,7 +43,6 @@ onMounted(() => {
 .chat {
   width: 16.25em;
   height: 22.81em;
-  
 
   &__text-container {
     width: 16.25rem;

@@ -5,12 +5,11 @@ defineProps<Stream>();
 </script>
 <template>
   <div class="channel-container">
-    <img
-      class="channel-img"
-      :src="profile_image_url"
-    />
+    <NuxtLink :to="`/streamer/${user_login}`">
+      <img class="channel-img" :src="profile_image_url"
+    /></NuxtLink>
     <div class="channel-name">
-      <NuxtLink to="/streamer"
+      <NuxtLink :to="`/streamer/${user_login}`"
         ><p class="channel-name__text">{{ user_name }}</p></NuxtLink
       >
       <p class="channel-name__description">{{ game_name }}</p>
