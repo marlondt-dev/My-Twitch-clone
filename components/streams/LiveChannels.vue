@@ -67,6 +67,7 @@ onMounted(() => {
 .channels-container {
   width: 76.25em;
   height: auto;
+  overflow: visible;
 
   &__text {
     @include text(600, 1.125em, var(--btn-text-color));
@@ -83,5 +84,6 @@ onMounted(() => {
   gap: 2.3125rem;
   width: 76.25em;
   height: auto;
+  overflow: visible;
 }
 </style>

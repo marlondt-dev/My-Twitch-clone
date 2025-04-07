@@ -8,15 +8,19 @@ defineProps<{
 <template>
   <div class="details-container">
     <NuxtLink :to="`/streamer/${stream.user_login}`">
-      <img
-        :src="
-          stream.thumbnail_url
-            .replace('{width}', '382')
-            .replace('{height}', '210')
-        "
-      />
+      <div class="image-container">
+    <img
+      :src="
+        stream.thumbnail_url
+          .replace('{width}', '382')
+          .replace('{height}', '210')
+      "
+      class="thumbnail"
+    />
+  </div>
     </NuxtLink>
     <div class="live-details">
+      
       <img class="live-details__img" :src="stream.profile_image_url" />
       <div class="live-details__container">
         <NuxtLink :to="`/streamer/${stream.user_login}`"
@@ -26,7 +30,7 @@ defineProps<{
         <p class="live-details__category">{{ stream.game_name }}</p>
         <div  v-if="stream.tags && stream.tags.length > 0" class="tags-container">
     <span 
-      v-for="(tag, index) in stream.tags.slice(0, 2)" 
+      v-for="(tag, index) in stream.tags.slice(0, 3)" 
       :key="index" 
       class="tag"
     >
@@ -42,7 +46,7 @@ defineProps<{
 .details-container {
   max-width: 23.87em;
   height: auto;
-  background-color: black;
+  background-color: var( --bg-color);
   color: white;
   overflow: hidden;
 
@@ -52,16 +56,7 @@ defineProps<{
   }
 }
 
-.details-container:hover{
-    transform: translate(-0.25em, -0.25em); 
-  box-shadow: 0.25em 0.25em 0 rgba(145, 70, 255, 0.6); 
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-  }
 
-  .details-container:hover img {
-  transform: scale(1.03);
-  transition: transform 0.3s ease;
-}
 
 .live-details {
   width: 23.875em;
@@ -108,6 +103,25 @@ defineProps<{
   }
 }
 
+.image-container {
+  position: relative;
+  border-radius: 4px;
+  overflow: visible; /* Asegúrate de que la sombra no se recorte */
+}
+
+.thumbnail {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 4px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease; /* Agrega box-shadow a la transición */
+}
+
+/* Efecto hover - Movimiento + Sombra externa morada */
+.image-container:hover .thumbnail {
+  transform: translate(0.375em, -0.375em);
+  box-shadow: -0.375em 4px 0 rgba(145, 70, 255, 0.6); /* Sombra abajo-izquierda */
+}
 .tags-container {
   display: flex;
   gap: 0.5rem;
