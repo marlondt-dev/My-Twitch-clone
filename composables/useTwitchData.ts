@@ -1,4 +1,4 @@
-import { TwitchAPI } from "@/server/services/twitchApi";
+import { TwitchAPI } from "~/service/services/twitchApi";
 import type { Stream } from "@/types/stream";
 
 type Endpoint = "streams" | "games/top" | "users";

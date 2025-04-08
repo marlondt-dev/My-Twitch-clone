@@ -7,6 +7,7 @@ export default defineNuxtConfig({
       TWITCH_REDIRECT_URI: process.env.TWITCH_REDIRECT_URI || "",
     },
   },
+
   css: ["~/assets/styles/reset.css", "~/assets/styles/variables.css"],
   vite: {
     css: {
