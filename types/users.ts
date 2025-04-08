@@ -7,7 +7,7 @@ export type User = {
   description: string;
   profile_image_url: string;
   offline_image_url: string;
-  view_count: 5980557;
+  view_count: number;
   email: string;
   created_at: Date;
 };

@@ -1,28 +1,33 @@
 <script setup lang="ts">
-import { StreamsDivisionLine } from "#components";
+
+import ShowMore from "../ui/ShowMore.vue";
 </script>
 <template>
   <main class="main-container">
     <StreamsLiveChannels />
-    <StreamsDivisionLine />
+    <ShowMore />
 
     <StreamsLiveChannels
       section-id="english"
       title="English streams"
       language="en"
     />
+    <ShowMore />
     <StreamsLiveChannels
       section-id="fortnite"
       title="Fortnite streams"
       game-id="33214"
     />
+    <ShowMore />
     <StreamsCategories />
+    <ShowMore />
+
     <StreamsLiveChannels
       section-id="league"
       title="League of Legends"
       game-id="21779"
     />
-    <StreamsDivisionLine />
+    <ShowMore />
     <StreamsLiveChannels
       section-id="Warzone"
       title="Warzone"

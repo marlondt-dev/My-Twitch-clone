@@ -10,4 +10,7 @@ export type Stream = {
   profile_image_url?: string;
   offline_image_url?: string;
   tags: string[];
+  display_name: string;
+  description: string;
+  view_count: number;
 };

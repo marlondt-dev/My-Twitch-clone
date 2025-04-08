@@ -1,4 +1,4 @@
-// twitchApi.ts
+
 export class TwitchAPI {
   private clientId = process.env.TWITCH_CLIENT_ID!;
   private clientSecret = process.env.TWITCH_CLIENT_SECRET!;

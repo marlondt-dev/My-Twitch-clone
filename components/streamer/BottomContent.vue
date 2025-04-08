@@ -1,89 +1,99 @@
 <script setup lang="ts">
 import { streamerButtons } from "@/assets/data/texts.json";
-import type { User } from "@/types/users";
+import type { Stream } from '@/types/stream';
 import { useTwitchData } from "@/composables/useTwitchData";
+import { useRoute, useRouter } from 'vue-router';
+
+definePageMeta({
+  key: (route) => route.fullPath,
+});
 
 const route = useRoute();
-const username = route.params.username;
+const router = useRouter();
 
-const { data: users } = useTwitchData<User>(
-  "users",
-  { login: username },
-  { componentId: "streamer-frame" }
+const username = ref<string>(
+  Array.isArray(route.params.username) ? route.params.username[0] : route.params.username
 );
 
-// const { data: streams } = useTwitchData(
-//   "streams",
-//   { user_login: username },
-//   { componentId: "stream-info" }
-// );
+const {
+  data: streams,
+  refresh,
+  
+} = useTwitchData<Stream>('streams', { user_login: username.value }, {
+  includeUserProfiles: true,
+  componentId: username.value,
+});
 
-console.log(users);
+
+watch(() => route.params.username, async (newUsername) => {
+  const normalized = Array.isArray(newUsername) ? newUsername[0] : newUsername;
+  if (normalized !== username.value) {
+    await router.replace({ path: `/streamer/${normalized}` }); 
+  }
+});
+
+watchEffect(() => {
+  refresh();
+});
 </script>
 <template>
-  <section class="content-container">
-    <div class="stream">
-      <img
-        class="stream__img"
-        src="https://yt3.ggpht.com/a/AATXAJzuyjCt8K0QD8x_PrTB11LTlvpX2iVWk4eCSQ=s176-c-k-c0xffffffff-no-rj-mo"
-      />
-      <article class="stream-content">
-        <div class="stream-content-top">
-          <p class="stream-content-top__text">{{ users }}</p>
-          <div class="stream-content__buttons">
-            <MyButton :class="'blue'">
-              <img src="../../public/heart.png" />
-              {{ streamerButtons.follow }}
-            </MyButton>
-            <MyButton :class="'gray'"
-              >{{ streamerButtons.suscribe }}
-              <img src="../../public/star.png" />
-              <Icon name="cuida:caret-down-outline" size="24" />
-            </MyButton>
+  <div :key="username">
+    <section class="content-container">
+      <div class="stream">
+        <img 
+          class="stream__img" 
+          :src="streams[0]?.profile_image_url" 
+          :alt="streams[0]?.display_name"
+        />
+        <article class="stream-content">
+          <div class="stream-content-top">
+            <p class="stream-content-top__text">{{ streams[0]?.display_name }}</p>
+            <div class="stream-content__buttons">
+              <MyButton :class="'blue'">
+                <img src="../../public/heart.png" />
+                {{ streamerButtons.follow }}
+              </MyButton>
+              <MyButton :class="'gray'">
+                {{ streamerButtons.suscribe }}
+                <img src="../../public/star.png" />
+                <Icon name="cuida:caret-down-outline" size="24" />
+              </MyButton>
+            </div>
           </div>
-        </div>
-        <div class="stream-content-middle">
-          <p class="stream-content-middle__text">
-            este es el titulo del stream actual
-          </p>
-          <div class="stream-content-middle__viewers">
-            Viewers
-            <img src="../../public/Frame26.png" />
+
+          <div class="stream-content-middle">
+            <p class="stream-content-middle__text">
+              {{ streams[0]?.title || 'Offline' }}
+            </p>
+            <div class="stream-content-middle__viewers">
+              {{ streams[0]?.viewer_count }}
+              <img src="../../public/Frame26.png" />
+            </div>
           </div>
-        </div>
-        <p class="stream-content__category">Talk Shows & Podcasts</p>
-        <span class="stream-content__tags">tags</span>
-      </article>
-    </div>
-    <p class="about">About Miduuxeneize</p>
-    <article class="stream-description">
-      <p class="stream-description__text">184M followers</p>
-      <p class="stream-description__text">
-        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aspernatur et
-        consequatur obcaecati commodi eveniet perspiciatis cupiditate qui
-        dolorem.
-      </p>
-      <div class="stream-description-container">
-        <img
-          class="stream-description-container__rrss"
-          src="../../public/youtube.png"
-        />
-        <img
-          class="stream-description-container__rrss"
-          src="../../public/instagram.png"
-        />
-        <img
-          class="stream-description-container__rrss"
-          src="../../public/twitter.png"
-        />
-        <img
-          class="stream-description-container__rrss"
-          src="../../public/TikTok.png"
-        />
+
+          <p class="stream-content__category">{{ streams[0]?.game_name }}</p>
+          <span class="stream-content__tags">tags</span>
+        </article>
       </div>
-    </article>
-  </section>
+
+      <p class="about">About {{ streams[0]?.display_name }}</p>
+      <article class="stream-description">
+        <p class="stream-description__text">{{ streams[0]?.viewer_count }} followers</p>
+        <p class="stream-description__text">
+          {{ streams[0]?.description || 'No description provided' }}  
+        </p>
+        <div class="stream-description-container">
+          <img class="stream-description-container__rrss" src="../../public/youtube.png" />
+          <img class="stream-description-container__rrss" src="../../public/instagram.png" />
+          <img class="stream-description-container__rrss" src="../../public/twitter.png" />
+          <img class="stream-description-container__rrss" src="../../public/TikTok.png" />
+        </div>
+      </article>
+    </section>
+  </div>
 </template>
+
+
 
 <style lang="scss" scoped>
 .content-container {
