@@ -1,0 +1,38 @@
+* {
+   margin: 0;
+   border: none;
+   padding: 0;
+   box-sizing: border-box;
+ }
+  html{
+    scroll-behavior: smooth;
+    background-color: var(--bg-color);
+  }
+
+ body{
+    line-height: 1.6;
+ }
+
+ button{
+    cursor: pointer;
+    border: none;
+   
+ }
+
+ a{
+    text-decoration: none;
+ }
+
+ img{
+    max-width: 100%;
+ }
+
+ ul{
+    list-style: none;
+ }
+
+ h2, h3{
+   color: var(--text-color-white);
+   text-align: center;
+ }
+

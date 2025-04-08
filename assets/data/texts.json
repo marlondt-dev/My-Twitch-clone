@@ -1,0 +1,29 @@
+{
+  "navButtons": {
+    "login": "Login",
+    "sign up": "Sign Up"
+  },
+
+  "recommendedChannels": {
+    "recommended": "Recommended Channels"
+  },
+
+  "channelContainers": {
+    "live": "live Channels",
+    "like": "we think you'll like",
+    "categories": "Categories"
+  },
+
+  "streamerButtons": {
+    "follow": "Follow",
+    "suscribe": "Suscribe"
+  },
+
+  "streamChat": {
+    "streamTitle": "stream chat",
+    "giftButton": "Gift a Sub now to be #1!",
+    "welcome": "Welcome to the chat room!",
+    "slow": "Slow mode",
+    "message": "Send a message"
+  }
+}
