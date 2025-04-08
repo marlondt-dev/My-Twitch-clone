@@ -1,53 +1,61 @@
 <script setup lang="ts">
 import { streamerButtons } from "@/assets/data/texts.json";
-import type { Stream } from '@/types/stream';
+import type { Stream } from "@/types/stream";
 import { useTwitchData } from "@/composables/useTwitchData";
-import { useRoute, useRouter } from 'vue-router';
+import { useRoute, useRouter } from "vue-router";
 
 definePageMeta({
-  key: (route) => route.fullPath,
+  key: (route) => `streamer-${route.params.username}`,
 });
 
 const route = useRoute();
 const router = useRouter();
 
-const username = ref<string>(
-  Array.isArray(route.params.username) ? route.params.username[0] : route.params.username
+const username = computed(() => {
+  return Array.isArray(route.params.username)
+    ? route.params.username[0]
+    : route.params.username;
+});
+
+const { data: streams, refresh } = useTwitchData<Stream>(
+  "streams",
+  { user_login: username.value },
+  {
+    includeUserProfiles: true,
+    componentId: username.value,
+  }
 );
 
-const {
-  data: streams,
-  refresh,
-  
-} = useTwitchData<Stream>('streams', { user_login: username.value }, {
-  includeUserProfiles: true,
-  componentId: username.value,
-});
-
-
-watch(() => route.params.username, async (newUsername) => {
-  const normalized = Array.isArray(newUsername) ? newUsername[0] : newUsername;
-  if (normalized !== username.value) {
-    await router.replace({ path: `/streamer/${normalized}` }); 
+watch(
+  () => route.params.username,
+  async (newUsername) => {
+    const normalized = Array.isArray(newUsername)
+      ? newUsername[0]
+      : newUsername;
+    if (normalized !== username.value) {
+      await router.replace({ path: `/streamer/${normalized}` });
+    }
   }
-});
+);
 
 watchEffect(() => {
   refresh();
 });
 </script>
 <template>
-  <div :key="username">
+  <div :key="`streamer-${username}`">
     <section class="content-container">
       <div class="stream">
-        <img 
-          class="stream__img" 
-          :src="streams[0]?.profile_image_url" 
+        <img
+          class="stream__img"
+          :src="streams[0]?.profile_image_url"
           :alt="streams[0]?.display_name"
         />
         <article class="stream-content">
           <div class="stream-content-top">
-            <p class="stream-content-top__text">{{ streams[0]?.display_name }}</p>
+            <p class="stream-content-top__text">
+              {{ streams[0]?.display_name }}
+            </p>
             <div class="stream-content__buttons">
               <MyButton :class="'blue'">
                 <img src="../../public/heart.png" />
@@ -63,7 +71,7 @@ watchEffect(() => {
 
           <div class="stream-content-middle">
             <p class="stream-content-middle__text">
-              {{ streams[0]?.title || 'Offline' }}
+              {{ streams[0]?.title || "Offline" }}
             </p>
             <div class="stream-content-middle__viewers">
               {{ streams[0]?.viewer_count }}
@@ -78,22 +86,34 @@ watchEffect(() => {
 
       <p class="about">About {{ streams[0]?.display_name }}</p>
       <article class="stream-description">
-        <p class="stream-description__text">{{ streams[0]?.viewer_count }} followers</p>
         <p class="stream-description__text">
-          {{ streams[0]?.description || 'No description provided' }}  
+          {{ streams[0]?.viewer_count }} followers
+        </p>
+        <p class="stream-description__text">
+          {{ streams[0]?.description || "No description provided" }}
         </p>
         <div class="stream-description-container">
-          <img class="stream-description-container__rrss" src="../../public/youtube.png" />
-          <img class="stream-description-container__rrss" src="../../public/instagram.png" />
-          <img class="stream-description-container__rrss" src="../../public/twitter.png" />
-          <img class="stream-description-container__rrss" src="../../public/TikTok.png" />
+          <img
+            class="stream-description-container__rrss"
+            src="../../public/youtube.png"
+          />
+          <img
+            class="stream-description-container__rrss"
+            src="../../public/instagram.png"
+          />
+          <img
+            class="stream-description-container__rrss"
+            src="../../public/twitter.png"
+          />
+          <img
+            class="stream-description-container__rrss"
+            src="../../public/TikTok.png"
+          />
         </div>
       </article>
     </section>
   </div>
 </template>
-
-
 
 <style lang="scss" scoped>
 .content-container {
