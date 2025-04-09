@@ -13,7 +13,7 @@ defineProps<Category>();
     <div class="card-details">
       <p class="card-details__name">{{ name }}</p>
       <p class="card-details__viewers">45545</p>
-      <p class="card-details__tag">tag</p>
+      <span class="card-details__tag">tag</span>
     </div>
   </div>
 </template>

@@ -1,30 +1,30 @@
-<script setup lang="ts">
-import type { Stream } from "@/types/stream";
-
-defineProps<{
-  stream: Stream;
-}>();
-</script>
 <template>
   <div class="details-container">
-    <NuxtLink :to="`/streamer/${stream.user_login}`">
+    <NuxtLink :to="`/streamer/${stream.user_login}`" class="thumbnail-link">
       <div class="image-container">
         <img
           class="thumbnail"
           :src="
             stream.thumbnail_url
-              .replace('{width}', '382')
-              .replace('{height}', '210')
-          " alt="stream picture"
+              .replace('{width}', '440')
+              .replace('{height}', '248')
+          " 
+          alt="stream picture"
         />
+        <div class="viewer-count">
+          <span class="live-indicator"></span>
+          {{ formatViewerCount(stream.viewer_count) }}
+        </div>
       </div>
     </NuxtLink>
     <div class="live-details">
-      <img class="live-details__img" :src="stream.profile_image_url" alt="stream profile picture" />
+      <NuxtLink :to="`/streamer/${stream.user_login}`" class="profile-link">
+        <img class="live-details__img" :src="stream.profile_image_url" alt="stream profile picture" />
+      </NuxtLink>
       <div class="live-details__container">
-        <NuxtLink :to="`/streamer/${stream.user_login}`"
-          ><p class="live-details__title">{{ stream.title }}</p></NuxtLink
-        >
+        <NuxtLink :to="`/streamer/${stream.user_login}`">
+          <p class="live-details__title" :title="stream.title">{{ stream.title }}</p>
+        </NuxtLink>
         <p class="live-details__user">{{ stream.user_name }}</p>
         <p class="live-details__category">{{ stream.game_name }}</p>
         <div
@@ -44,24 +44,48 @@ defineProps<{
   </div>
 </template>
 
+<script setup lang="ts">
+import type { Stream } from "@/types/stream";
+
+defineProps<{
+  stream: Stream;
+}>();
+
+function formatViewerCount(count: number): string {
+  if (count >= 1000) {
+    return (count / 1000).toFixed(1) + 'K';
+  }
+  return count.toString();
+}
+</script>
+
 <style lang="scss" scoped>
 .details-container {
-  max-width: 23.87em;
-  height: auto;
+  width: 100%;
+  height: 100%;
   background-color: var(--bg-color);
   color: white;
-  overflow: visible;
+  overflow: hidden;
   position: relative;
+  border-radius: 0.25em;
+}
+
+.thumbnail-link {
+  display: block;
+  width: 100%;
 }
 
 .live-details {
-  width: 23.875em;
+  width: 100%;
   height: auto;
   display: flex;
-  justify-content: space-between;
+  gap: 0.5em; 
+  padding: 0.5em 0;
 
   &__container {
-    width: 20.4375em;
+    width: 100%;
+    flex: 1; 
+    min-width: 0;
     height: auto;
     @include flex(column, left, space-evenly);
   }
@@ -69,68 +93,120 @@ defineProps<{
   &__img {
     width: 2.6875em;
     height: 2.6875em;
-    border-radius: 62499.9375em;
+    border-radius: 50%;
+    object-fit: cover;
   }
 
   &__title {
     @include text(600, 0.875em, var(--text-color-white));
-    transition: 0.3s ease;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
     max-width: 100%;
+    transition: color 0.3s ease;
+    line-height: 1.2;
+    margin-bottom: 0.25em;
   }
 
   &__title:hover {
     color: #a970ff;
   }
 
-  &__category:hover {
-    color: #a970ff;
-  }
-
   &__user {
     @include text(400, 0.8125em, var(--text-color-gray));
+    margin-bottom: 0.25em;
   }
 
   &__category {
     @include text(400, 0.8125em, var(--text-color-gray));
-    transition: 0.3s ease;
+    transition: color 0.3s ease;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  &__category:hover {
+    color: #a970ff;
   }
 }
 
 .image-container {
   position: relative;
   border-radius: 0.25em;
-  overflow: visible;
+  overflow: hidden;
+  aspect-ratio: 16/9;
 }
 
 .thumbnail {
   width: 100%;
-  height: auto;
+  height: 100%;
+  object-fit: cover;
   display: block;
+  transition: transform 0.2s ease;
+}
+
+.viewer-count {
+  position: absolute;
+  left: 0.5em;
+  bottom: 0.5em;
+  background-color: rgba(0, 0, 0, 0.6);
+  padding: 0.1em 0.5em;
   border-radius: 0.25em;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-  position: relative;
-  z-index: 1;
+  font-size: 0.75em;
+  font-weight: 600;
+  color: white;
+  display: flex;
+  align-items: center;
+  gap: 0.25em;
+}
+
+.live-indicator {
+  display: inline-block;
+  width: 0.5em;
+  height: 0.5em;
+  background-color: #e91916;
+  border-radius: 50%;
 }
 
 .image-container:hover .thumbnail {
-  transform: translate(0.5em, -0.5em);
-  box-shadow: -0.5em 0.5em 0 rgba(145, 70, 255, 0.6);
+  transform: scale(1.05);
 }
+
 .tags-container {
   display: flex;
-  gap: 0.5rem;
-  margin-top: 0.5rem;
+  gap: 0.25rem;
+  margin-top: 0.25rem;
   flex-wrap: wrap;
 }
 
 .tag {
   background-color: rgba(255, 255, 255, 0.1);
-  padding: 0.25rem 0.5rem;
+  padding: 0.15rem 0.35rem;
   border-radius: 0.25em;
-  @include text(500, 0.75em, #bf94ff);
+  @include text(500, 0.7em, #bf94ff);
   border: 0.063em solid rgba(145, 70, 255, 0.2);
+  white-space: nowrap;
+}
+
+/* Ajustes responsive */
+@media (max-width: 64em) {
+  .live-details__title {
+    font-size: 0.8em;
+  }
+  
+  .live-details__user,
+  .live-details__category {
+    font-size: 0.75em;
+  }
+  
+  .tag {
+    font-size: 0.65em;
+  }
+}
+
+@media (max-width: 30em) {
+  .live-details {
+    align-items: flex-start;
+  }
 }
 </style>

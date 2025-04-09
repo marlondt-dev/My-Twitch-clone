@@ -23,7 +23,7 @@ const props = defineProps({
 });
 
 const streamParams = {
-  first: 3,
+  first: 4,
   language: props.language,
 };
 
@@ -63,27 +63,50 @@ onMounted(() => {
     </StreamsStreamContainer>
   </div>
 </template>
+
 <style lang="scss" scoped>
 .channels-container {
-  width: 76.25em;
-  height: auto;
+  width: 100%;
+  max-width: 76.25em;
+  margin: 0 auto;
   overflow: visible;
-
-  &__text {
-    @include text(600, 1.125em, var(--btn-text-color));
-
-    &--blue {
-      @include text(600, 1.125em, var(--button-color-blue));
-    }
-  }
+  padding: 0 1rem; 
 }
 
 .channels {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 2.3125rem;
-  width: 76.25em;
-  height: auto;
-  overflow: visible;
+  grid-template-columns: repeat(4, 1fr); /* Por defecto 4 columnas para pantallas grandes */
+  gap: 0.75em; 
+  width: 100%;
+  transition: all 0.3s ease; 
+}
+
+/* Tablets grandes */
+@media (max-width: 74em) { 
+  .channels {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Tablets medianas */
+@media (max-width: 64em) { 
+  .channels {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Móviles grandes */
+@media (max-width: 40em) { 
+  .channels {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.5em;
+  }
+}
+
+/* Móviles pequeños */
+@media (max-width: 30em) { 
+  .channels {
+    grid-template-columns: 1fr;
+  }
 }
 </style>

@@ -1,5 +1,4 @@
 <script setup lang="ts">
-// import { useStreams } from "@/composables/useStreams";
 import { useTwitchData } from "@/composables/useTwitchData";
 import { recommendedChannels } from "@/assets/data/texts.json";
 import type { Stream } from "@/types/stream";
