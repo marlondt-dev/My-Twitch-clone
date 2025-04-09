@@ -3,12 +3,12 @@
   <div class="channel-name">
     <div class="channel-name__icon">
       <NuxtLink to="/"
-        ><img src="../public/midutch-logo.png" alt="Marlon logo"
+        ><img src="~/public/midutch-logo.png" alt="Marlon logo"
       /></NuxtLink>
     </div>
 
     <div class="channel-name__options">
-      <img src="../public/container.png" class="options" />
+      <img src="~/public/container.png" class="options" />
     </div>
   </div>
 </template>
