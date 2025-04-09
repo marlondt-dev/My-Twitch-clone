@@ -15,7 +15,7 @@ defineProps<Stream>();
       <p class="channel-name__description">{{ game_name }}</p>
     </div>
     <div class="channel-name__viewers">
-      <img class="channel-name__icon" src="../../public/Background.png" />
+      <img class="channel-name__icon" src="~/public/Background.png" />
       <p>{{ viewer_count }}k</p>
     </div>
   </div>

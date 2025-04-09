@@ -28,7 +28,7 @@ onMounted(() => {
   <aside class="chat">
     <div class="chat__text-container">
       <p>{{ recommendedChannels.recommended }}</p>
-      <img src="../../public/reccommended-icon.png" />
+      <img src="~/public/reccommended-icon.png" />
     </div>
     <div v-if="error"><h2>Error while loading...</h2></div>
     <RecommendedChannels

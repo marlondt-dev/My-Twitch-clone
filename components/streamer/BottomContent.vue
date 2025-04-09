@@ -58,12 +58,12 @@ watchEffect(() => {
             </p>
             <div class="stream-content__buttons">
               <MyButton :class="'blue'">
-                <img src="../../public/heart.png" />
+                <img src="~/public/heart.png" alt="Follow"/>
                 {{ streamerButtons.follow }}
               </MyButton>
               <MyButton :class="'gray'">
                 {{ streamerButtons.suscribe }}
-                <img src="../../public/star.png" />
+                <img src="~/public/star.png" alt="star" />
                 <Icon name="cuida:caret-down-outline" size="24" />
               </MyButton>
             </div>
@@ -75,7 +75,7 @@ watchEffect(() => {
             </p>
             <div class="stream-content-middle__viewers">
               {{ streams[0]?.viewer_count }}
-              <img src="../../public/Frame26.png" />
+              <img src="~/public/Frame26.png" alt="subscribe options"/>
             </div>
           </div>
 
@@ -95,19 +95,19 @@ watchEffect(() => {
         <div class="stream-description-container">
           <img
             class="stream-description-container__rrss"
-            src="../../public/youtube.png"
+            src="~/public/youtube.png" alt="Youtube"
           />
           <img
             class="stream-description-container__rrss"
-            src="../../public/instagram.png"
+            src="~/public/instagram.png"
+           alt=" instagram"/>
+          <img
+            class="stream-description-container__rrss"
+            src="~/public/twitter.png  " alt=" twitter"
           />
           <img
             class="stream-description-container__rrss"
-            src="../../public/twitter.png"
-          />
-          <img
-            class="stream-description-container__rrss"
-            src="../../public/TikTok.png"
+            src="~/public/TikTok.png" alt=" Tiktok"
           />
         </div>
       </article>

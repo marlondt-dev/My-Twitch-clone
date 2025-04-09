@@ -16,7 +16,7 @@
   
   .line {
     border: none;
-    border-top: 0.1em solid #ccc; /* 1px = 0.0625em (aproximadamente) */
+    border-top: 0.1em solid #ccc; 
     width: 40%;
     margin: 0 1em;
   }

@@ -6,7 +6,7 @@
     </div>
 
     <MyButton class="search-panel__icon" :color="'gray'">
-      <img class="search-panel__icon__img" src="../public/SVG.png" >
+      <img class="search-panel__icon__img" src="~/public/SVG.png" alt="search">
     </MyButton>
   </div>
 </template>

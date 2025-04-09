@@ -12,7 +12,7 @@ import { navButtons } from "@/assets/data/texts.json";
         <MyButton :class="'blue'">{{ navButtons["sign up"] }}</MyButton>
       </li>
       <li>
-        <div><img src="../public/account.png" /></div>
+        <div><img src="../public/account.png" alt="user"/></div>
       </li>
     </ul>
   </div>

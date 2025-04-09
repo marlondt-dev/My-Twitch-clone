@@ -15,12 +15,12 @@ defineProps<{
             stream.thumbnail_url
               .replace('{width}', '382')
               .replace('{height}', '210')
-          "
+          " alt="stream picture"
         />
       </div>
     </NuxtLink>
     <div class="live-details">
-      <img class="live-details__img" :src="stream.profile_image_url" />
+      <img class="live-details__img" :src="stream.profile_image_url" alt="stream profile picture" />
       <div class="live-details__container">
         <NuxtLink :to="`/streamer/${stream.user_login}`"
           ><p class="live-details__title">{{ stream.title }}</p></NuxtLink

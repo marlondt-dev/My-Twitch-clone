@@ -7,17 +7,17 @@ import { streamChat } from "@/assets/data/texts.json";
     <section class="stream-chat">
       <img
         class="stream-chat__icon"
-        src="../../public/arrow-right.png"
+        src="~/public/arrow-right.png"
         alt="arrow-right"
       />
       <p class="stream-chat__text">{{ streamChat.streamTitle }}</p>
-      <img class="stream-chat__icon" src="../../public/twopeople.png" />
+      <img class="stream-chat__icon" src="~/public/twopeople.png" alt="users"/>
     </section>
 
     <section class="gift-container">
       <Icon name="bytesize:chevron-left" style="color: white" />
       <button class="gift-button">
-        <img src="../../public/gift.png" /> {{ streamChat.giftButton }}</button
+        <img src="~/public/gift.png" alt="gift" /> {{ streamChat.giftButton }}</button
       ><Icon name="bytesize:chevron-right" style="color: white" />
     </section>
     <section class="online-chat-container">
