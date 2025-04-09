@@ -22,8 +22,8 @@ onMounted(() => {
     <aside>
       <div>
         <iframe
-          :src="`https://www.twitch.tv/embed/${username}/chat?parent=${hostname}`"
-          height="720"
+          :src="`https://www.twitch.tv/embed/${username}/chat?parent=${hostname}&darkpopout=true`"
+          height="870"
           width="100%"
         >
         </iframe>

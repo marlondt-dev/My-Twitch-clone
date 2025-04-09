@@ -8,7 +8,7 @@
             stream.thumbnail_url
               .replace('{width}', '440')
               .replace('{height}', '248')
-          " 
+          "
           alt="stream picture"
         />
         <div class="viewer-count">
@@ -19,11 +19,17 @@
     </NuxtLink>
     <div class="live-details">
       <NuxtLink :to="`/streamer/${stream.user_login}`" class="profile-link">
-        <img class="live-details__img" :src="stream.profile_image_url" alt="stream profile picture" />
+        <img
+          class="live-details__img"
+          :src="stream.profile_image_url"
+          alt="stream profile picture"
+        />
       </NuxtLink>
       <div class="live-details__container">
         <NuxtLink :to="`/streamer/${stream.user_login}`">
-          <p class="live-details__title" :title="stream.title">{{ stream.title }}</p>
+          <p class="live-details__title" :title="stream.title">
+            {{ stream.title }}
+          </p>
         </NuxtLink>
         <p class="live-details__user">{{ stream.user_name }}</p>
         <p class="live-details__category">{{ stream.game_name }}</p>
@@ -53,7 +59,7 @@ defineProps<{
 
 function formatViewerCount(count: number): string {
   if (count >= 1000) {
-    return (count / 1000).toFixed(1) + 'K';
+    return (count / 1000).toFixed(1) + "K";
   }
   return count.toString();
 }
@@ -79,12 +85,12 @@ function formatViewerCount(count: number): string {
   width: 100%;
   height: auto;
   display: flex;
-  gap: 0.5em; 
+  gap: 0.5em;
   padding: 0.5em 0;
 
   &__container {
     width: 100%;
-    flex: 1; 
+    flex: 1;
     min-width: 0;
     height: auto;
     @include flex(column, left, space-evenly);
@@ -133,16 +139,18 @@ function formatViewerCount(count: number): string {
 .image-container {
   position: relative;
   border-radius: 0.25em;
-  overflow: hidden;
+  overflow: visible;
   aspect-ratio: 16/9;
 }
 
 .thumbnail {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
+  height: auto;
   display: block;
-  transition: transform 0.2s ease;
+  border-radius: 0.25em;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  position: relative;
+  z-index: 1;
 }
 
 .viewer-count {
@@ -169,7 +177,8 @@ function formatViewerCount(count: number): string {
 }
 
 .image-container:hover .thumbnail {
-  transform: scale(1.05);
+  transform: translate(0.5em, -0.5em);
+  box-shadow: -0.5em 0.5em 0 rgba(145, 70, 255, 0.6);
 }
 
 .tags-container {
@@ -188,17 +197,16 @@ function formatViewerCount(count: number): string {
   white-space: nowrap;
 }
 
-/* Ajustes responsive */
 @media (max-width: 64em) {
   .live-details__title {
     font-size: 0.8em;
   }
-  
+
   .live-details__user,
   .live-details__category {
     font-size: 0.75em;
   }
-  
+
   .tag {
     font-size: 0.65em;
   }

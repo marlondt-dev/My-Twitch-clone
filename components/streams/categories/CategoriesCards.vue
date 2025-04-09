@@ -53,11 +53,12 @@ defineProps<Category>();
   }
 
   &__tag {
-    background-color: var(--button-color-gray);
-    border-radius: 562.5em;
-
-    @include text(600, 0.75em, var(--text-color-gray));
-    line-height: 1.125em;
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 0.15rem 0.35rem;
+    border-radius: 0.25em;
+    @include text(500, 0.7em, #bf94ff);
+    border: 0.063em solid rgba(145, 70, 255, 0.2);
+    white-space: nowrap;
   }
 }
 </style>

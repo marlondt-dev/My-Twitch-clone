@@ -70,41 +70,37 @@ onMounted(() => {
   max-width: 76.25em;
   margin: 0 auto;
   overflow: visible;
-  padding: 0 1rem; 
+  padding: 0 1rem;
 }
 
 .channels {
   display: grid;
-  grid-template-columns: repeat(4, 1fr); /* Por defecto 4 columnas para pantallas grandes */
-  gap: 0.75em; 
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.75em;
   width: 100%;
-  transition: all 0.3s ease; 
+  transition: all 0.3s ease;
 }
 
-/* Tablets grandes */
-@media (max-width: 74em) { 
+@media (max-width: 74em) {
   .channels {
     grid-template-columns: repeat(3, 1fr);
   }
 }
 
-/* Tablets medianas */
-@media (max-width: 64em) { 
+@media (max-width: 64em) {
   .channels {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
-/* Móviles grandes */
-@media (max-width: 40em) { 
+@media (max-width: 40em) {
   .channels {
     grid-template-columns: repeat(2, 1fr);
     gap: 0.5em;
   }
 }
 
-/* Móviles pequeños */
-@media (max-width: 30em) { 
+@media (max-width: 30em) {
   .channels {
     grid-template-columns: 1fr;
   }

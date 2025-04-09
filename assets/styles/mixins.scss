@@ -3,6 +3,16 @@
     @content;
   }
 }
+@mixin tablet($size: 40em) {
+  @media (min-width: $size) {
+    @content;
+  }
+}
+@mixin mobile($size: 30em) {
+  @media (min-width: $size) {
+    @content;
+  }
+}
 
 @mixin flex($direction: row, $align: center, $justiy: center) {
   display: flex;
