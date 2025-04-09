@@ -8,7 +8,7 @@
     </div>
 
     <div class="channel-name__options">
-      <img src="~/public/container.png" class="options" />
+      <Icon name="humbleicons:dots-vertical" style="color:white" size="20"/>
     </div>
   </div>
 </template>
